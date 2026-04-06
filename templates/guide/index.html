@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D tool ver.01</title>
+  <link rel="stylesheet" href="/static/guide/guide.css">
+</head>
+<body>
+
+<div class="app-wrapper">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar">
+
+    <div class="sidebar-header">
+      <div class="sidebar-title">3D tool ver.01</div>
+      <div class="tool-tabs">
+        {% for tool_id in tools %}
+        <button class="tool-tab" data-tool="{{ tool_id }}">
+          {{ tool_names[tool_id] }}
+        </button>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="sidebar-categories" id="catList">
+      <!-- Rendered by JS -->
+    </div>
+
+    <!-- OS Toggle -->
+    <div class="os-toggle-wrap">
+      <div class="os-toggle" id="osToggle">
+        <button class="os-btn active" data-os="mac">Mac</button>
+        <button class="os-btn" data-os="win">Windows</button>
+        <div class="os-toggle-slider"></div>
+      </div>
+    </div>
+
+    <!-- Ko-fi -->
+    <div class="kofi-wrap">
+      <button class="kofi-btn" id="kofiOpenBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.034-3.954-.208-.28-.264-.427-.232-.563.033-.136.128-.195.307-.211 1.818-.039 3.586.001 3.586.001l.205-3.301c.01-.129.028-.236.051-.324.198-.603.875-.676 1.064-.01.052.183.061.36.061.36l.188 3.274h3.07c.526-.015.929.41.163 1.819zm7.307.354c-.526.729-1.624 1.242-1.624 1.242l-.065-3.238s2.669.456 1.689 1.996z"/></svg>
+        개발자에게 커피 보내기 💛
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main">
+
+    <div class="main-header">
+      <div class="search-wrap">
+        <span class="search-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </span>
+        <input
+          type="text"
+          id="searchInput"
+          class="search-input"
+          placeholder="Search shortcuts..."
+          autocomplete="off"
+          spellcheck="false"
+        >
+      </div>
+      <div class="command-count" id="commandCount">
+        <span class="count-num">0</span> Commands
+      </div>
+    </div>
+
+    <div class="items-container" id="itemsContainer">
+      <!-- Rendered by JS -->
+    </div>
+
+  </main>
+
+</div>
+
+<!-- Embed all tool data as JSON for JS -->
+<script>
+window.GUIDE_DATA = {
+  {% for tool_id in tools %}
+  "{{ tool_id }}": {
+    "tool": "{{ tools_data[tool_id]['tool'] }}",
+    "name": "{{ tools_data[tool_id]['name'] }}",
+    "items": {{ tools_data[tool_id]['items'] | tojson }}
+  }{% if not loop.last %},{% endif %}
+  {% endfor %}
+};
+</script>
+<script src="/static/guide/guide.js"></script>
+
+<!-- 카카오페이 QR 모달 -->
+<div id="kakaoModal" style="display:none;position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;">
+  <div id="kakaoBackdrop" style="position:absolute;inset:0;background:rgba(0,0,0,0.55);backdrop-filter:blur(4px);"></div>
+  <div style="position:relative;z-index:1;background:#fff;border-radius:20px;padding:32px 28px 24px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,0.3);width:280px;">
+    <button id="kakaoCloseBtn" style="position:absolute;top:12px;right:14px;background:none;border:none;font-size:18px;cursor:pointer;color:#888;">✕</button>
+    <div style="font-size:15px;font-weight:700;margin-bottom:4px;">☕ 커피 한 잔 보내기</div>
+    <div style="font-size:12px;color:#888;margin-bottom:16px;">폰 카메라로 QR 스캔 → 카카오페이 송금</div>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://qr.kakaopay.com/Ej7lzT9k0fa07927" width="180" height="180" style="border-radius:8px;border:1px solid #eee;" alt="카카오페이 QR">
+    <div style="margin-top:14px;font-size:11px;color:#aaa;">감사합니다 🙏</div>
+  </div>
+</div>
+
+<script>
+  const kakaoModal = document.getElementById('kakaoModal');
+  document.getElementById('kofiOpenBtn').addEventListener('click', () => {
+    kakaoModal.style.display = 'flex';
+  });
+  document.getElementById('kakaoCloseBtn').addEventListener('click', () => {
+    kakaoModal.style.display = 'none';
+  });
+  document.getElementById('kakaoBackdrop').addEventListener('click', () => {
+    kakaoModal.style.display = 'none';
+  });
+</script>
+</body>
+</html>

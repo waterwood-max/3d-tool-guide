@@ -1,0 +1,2612 @@
+{
+  "tool": "blender",
+  "name": "Blender",
+  "items": [
+    {
+      "id": "b_grab",
+      "name": "Grab / Move",
+      "description": "오브젝트/엘리먼트 이동. G 후 X/Y/Z 누르면 축 고정. 숫자 입력으로 정확한 수치 이동",
+      "category": "Object Mode",
+      "badge": "shortcut",
+      "mac": "G",
+      "win": "G"
+    },
+    {
+      "id": "b_rotate",
+      "name": "Rotate",
+      "description": "오브젝트/엘리먼트 회전. R 후 축 키 + 각도 숫자로 정밀 회전 (예: R Z 45 = Z축 45도)",
+      "category": "Object Mode",
+      "badge": "shortcut",
+      "mac": "R",
+      "win": "R"
+    },
+    {
+      "id": "b_scale",
+      "name": "Scale",
+      "description": "오브젝트/엘리먼트 스케일 조정. S 후 축 고정 또는 숫자 입력 가능. S X 0 = X축 0으로 평탄화",
+      "category": "Object Mode",
+      "badge": "shortcut",
+      "mac": "S",
+      "win": "S"
+    },
+    {
+      "id": "b_duplicate",
+      "name": "Duplicate",
+      "description": "독립 복사본 생성 후 즉시 Grab 상태. 원본과 메시 데이터 완전 분리. 개별 편집이 필요할 때 사용",
+      "category": "Object Mode",
+      "badge": "shortcut",
+      "mac": "Shift + D",
+      "win": "Shift + D"
+    },
+    {
+      "id": "b_duplicate_linked",
+      "name": "Duplicate Linked",
+      "description": "메시 데이터를 공유하는 인스턴스 복제. 원본 편집 시 모든 복사본 동기화. 반복 배치 오브젝트 최적화에 필수",
+      "category": "Object Mode",
+      "badge": "shortcut",
+      "mac": "Alt + D",
+      "win": "Alt + D"
+    },
+    {
+      "id": "b_join",
+      "name": "Join",
+      "description": "여러 오브젝트를 하나의 메시로 합침. 합친 후 분리하려면 Edit Mode에서 P. 나중에 부분 편집이 필요하면 분리 유지 권장",
+      "category": "Object Mode",
+      "badge": "shortcut",
+      "mac": "Ctrl + J",
+      "win": "Ctrl + J"
+    },
+    {
+      "id": "b_origin_to_geo",
+      "name": "Origin to Geometry",
+      "description": "오브젝트 원점(피벗)을 지오메트리 중심으로 이동. 회전·스케일 기준점 조정. 이상하게 회전될 때 먼저 확인",
+      "category": "Object Mode",
+      "badge": "shortcut",
+      "mac": "RMB > Set Origin",
+      "win": "RMB > Set Origin"
+    },
+    {
+      "id": "b_apply_all",
+      "name": "Apply All Transforms",
+      "description": "이동·회전·스케일을 오브젝트 데이터에 영구 적용. 모디파이어 적용 전, 익스포트 전, 물리 시뮬레이션 전에 반드시 실행. 스케일 미적용 시 물리/노멀 이상 원인",
+      "category": "Object Mode",
+      "badge": "shortcut",
+      "mac": "Ctrl + A",
+      "win": "Ctrl + A"
+    },
+    {
+      "id": "b_hide",
+      "name": "Hide Selected",
+      "description": "선택 오브젝트 뷰포트 숨기기. 복잡한 씬에서 작업 영역 정리 시 사용",
+      "category": "Object Mode",
+      "badge": "shortcut",
+      "mac": "H",
+      "win": "H"
+    },
+    {
+      "id": "b_unhide_all",
+      "name": "Unhide All",
+      "description": "숨겨진 오브젝트 전체 표시",
+      "category": "Object Mode",
+      "badge": "shortcut",
+      "mac": "Alt + H",
+      "win": "Alt + H"
+    },
+    {
+      "id": "b_parent_set",
+      "name": "Set Parent",
+      "description": "마지막 선택 오브젝트를 부모로 지정. 부모 이동 시 자식도 따라 이동. Keep Transform으로 현재 위치 유지 가능",
+      "category": "Object Mode",
+      "badge": "shortcut",
+      "mac": "Ctrl + P",
+      "win": "Ctrl + P"
+    },
+    {
+      "id": "b_clear_parent",
+      "name": "Clear Parent",
+      "description": "부모 관계 해제. Keep Transform으로 현재 월드 위치를 유지하며 해제 가능",
+      "category": "Object Mode",
+      "badge": "shortcut",
+      "mac": "Alt + P",
+      "win": "Alt + P"
+    },
+    {
+      "id": "b_shade_smooth",
+      "name": "Shade Smooth / Flat",
+      "description": "오브젝트 노멀을 부드럽게 또는 플랫으로 전환. Shade Smooth + Auto Smooth(각도 기반)를 함께 쓰면 엣지는 날카롭고 면은 부드럽게 가능",
+      "category": "Object Mode",
+      "badge": "shortcut",
+      "mac": "RMB > Shade Smooth",
+      "win": "RMB > Shade Smooth"
+    },
+    {
+      "id": "b_collection",
+      "name": "Move to Collection",
+      "description": "오브젝트를 컬렉션(레이어)으로 이동. 씬 정리·가시성 관리·렌더 제외 등 레이어 기반 작업흐름에 필수",
+      "category": "Object Mode",
+      "badge": "shortcut",
+      "mac": "M",
+      "win": "M"
+    },
+    {
+      "id": "b_tab_editmode",
+      "name": "Toggle Edit Mode",
+      "description": "오브젝트 모드 ↔ 에딧 모드 전환. Edit Mode에서만 버텍스·엣지·폴리곤 편집 가능",
+      "category": "Edit Mode",
+      "badge": "shortcut",
+      "mac": "Tab",
+      "win": "Tab"
+    },
+    {
+      "id": "b_extrude",
+      "name": "Extrude Region",
+      "description": "선택 면/엣지/버텍스 돌출. E 후 축 고정 가능. Alt+E로 Extrude 유형 선택(Along Normals 등)",
+      "category": "Edit Mode",
+      "badge": "shortcut",
+      "mac": "E",
+      "win": "E"
+    },
+    {
+      "id": "b_extrude_normals",
+      "name": "Extrude Along Normals",
+      "description": "각 폴리곤의 노멀 방향으로 균등 돌출. 복잡한 곡면에서 두께 추가 시 일반 Extrude보다 자연스러운 결과",
+      "category": "Edit Mode",
+      "badge": "shortcut",
+      "mac": "Alt + E",
+      "win": "Alt + E"
+    },
+    {
+      "id": "b_inset",
+      "name": "Inset Faces",
+      "description": "폴리곤 안쪽으로 면 삽입(Inset). I 드래그로 크기 조절. Boundary 토글로 경계 포함 여부 선택. 창틀·패널·나사구멍 앞 단계로 자주 사용",
+      "category": "Edit Mode",
+      "badge": "shortcut",
+      "mac": "I",
+      "win": "I"
+    },
+    {
+      "id": "b_bevel",
+      "name": "Bevel",
+      "description": "엣지에 베벨 적용. 스크롤로 세그먼트 수 조절. V 누르면 버텍스 베벨 전환. 하드서피스 제품 모델링에서 코너 처리 필수",
+      "category": "Edit Mode",
+      "badge": "shortcut",
+      "mac": "Ctrl + B",
+      "win": "Ctrl + B"
+    },
+    {
+      "id": "b_bevel_vertex",
+      "name": "Bevel Vertex",
+      "description": "버텍스 자체에 베벨 적용. 꼭짓점을 여러 버텍스로 분산. 폴리 모델링에서 삼각폴리 제거 용도로도 활용",
+      "category": "Edit Mode",
+      "badge": "shortcut",
+      "mac": "Ctrl + Shift + B",
+      "win": "Ctrl + Shift + B"
+    },
+    {
+      "id": "b_loop_cut",
+      "name": "Loop Cut",
+      "description": "엣지 루프 삽입. 마우스 이동으로 위치 조절, 스크롤로 개수 추가. 슬라이드 모드로 비율 위치 고정 가능",
+      "category": "Edit Mode",
+      "badge": "shortcut",
+      "mac": "Ctrl + R",
+      "win": "Ctrl + R"
+    },
+    {
+      "id": "b_knife",
+      "name": "Knife Tool",
+      "description": "자유롭게 메시 컷. K 후 클릭으로 경로 그리기, Enter 확정. Z 누르면 관통 컷. C 누르면 45도/90도 스냅",
+      "category": "Edit Mode",
+      "badge": "shortcut",
+      "mac": "K",
+      "win": "K"
+    },
+    {
+      "id": "b_merge",
+      "name": "Merge Vertices",
+      "description": "버텍스 병합. M 후 At Center/At Cursor/At Last 등 선택. 중복 버텍스 제거 시 Merge by Distance(Alt+M) 함께 사용",
+      "category": "Edit Mode",
+      "badge": "shortcut",
+      "mac": "M",
+      "win": "M"
+    },
+    {
+      "id": "b_merge_distance",
+      "name": "Merge by Distance",
+      "description": "지정 거리 내 중복 버텍스 자동 병합. Import 후 토폴로지 정리, 불리언 결과 클린업에 필수. 구 이름 Remove Doubles",
+      "category": "Edit Mode",
+      "badge": "shortcut",
+      "mac": "Alt + M",
+      "win": "Alt + M"
+    },
+    {
+      "id": "b_fill",
+      "name": "Fill",
+      "description": "선택된 엣지/버텍스 경계를 면으로 채움. 열린 루프 닫기·홀 메꾸기. Alt+F는 Beauty Fill로 삼각화 후 최적 쿼드 생성",
+      "category": "Edit Mode",
+      "badge": "shortcut",
+      "mac": "F",
+      "win": "F"
+    },
+    {
+      "id": "b_bridge",
+      "name": "Bridge Edge Loops",
+      "description": "두 엣지 루프 사이를 면으로 연결. 구멍 연결, 실린더 연결, 토폴로지 이어붙이기. Edge 메뉴 > Bridge Edge Loops",
+      "category": "Edit Mode",
+      "badge": "shortcut",
+      "mac": "Ctrl + E > Bridge",
+      "win": "Ctrl + E > Bridge"
+    },
+    {
+      "id": "b_subdivide",
+      "name": "Subdivide",
+      "description": "선택 면/엣지 서브디바이드. RMB 메뉴에서 실행. 세분화 횟수·스무스 강도 조절 가능. 스컬프팅 전 해상도 올릴 때 사용",
+      "category": "Edit Mode",
+      "badge": "shortcut",
+      "mac": "RMB > Subdivide",
+      "win": "RMB > Subdivide"
+    },
+    {
+      "id": "b_separate",
+      "name": "Separate",
+      "description": "선택 메시를 독립 오브젝트로 분리. P > Selection. 불리언 후 파편 분리, 파츠별 머티리얼 분리 작업에 활용",
+      "category": "Edit Mode",
+      "badge": "shortcut",
+      "mac": "P",
+      "win": "P"
+    },
+    {
+      "id": "b_dissolve_edge",
+      "name": "Dissolve Edges",
+      "description": "선택 엣지 제거 후 인접 폴리곤 합침. Delete보다 메시를 더 깔끔하게 정리. 불필요한 엣지 루프 제거 시 사용",
+      "category": "Edit Mode",
+      "badge": "shortcut",
+      "mac": "Ctrl + X",
+      "win": "Ctrl + X"
+    },
+    {
+      "id": "b_spin",
+      "name": "Spin",
+      "description": "선택 엘리먼트를 3D 커서 주변으로 회전 복제. 나선형 구조·회전체·계단 제작. 각도와 복제 수 조절 가능",
+      "category": "Edit Mode",
+      "badge": "shortcut",
+      "mac": "Alt + R (Spin)",
+      "win": "Alt + R (Spin)"
+    },
+    {
+      "id": "b_shrink_fatten",
+      "name": "Shrink / Fatten",
+      "description": "선택 버텍스/면을 노멀 방향으로 수축·팽창. 오가닉 형태 부피 조절, 쉘 두께 조정에 직관적",
+      "category": "Edit Mode",
+      "badge": "shortcut",
+      "mac": "Alt + S",
+      "win": "Alt + S"
+    },
+    {
+      "id": "b_select_all",
+      "name": "Select All / Deselect All",
+      "description": "전체 선택 / 전체 해제 토글",
+      "category": "Selection",
+      "badge": "shortcut",
+      "mac": "A",
+      "win": "A"
+    },
+    {
+      "id": "b_select_box",
+      "name": "Box Select",
+      "description": "드래그 박스 영역 안의 엘리먼트 선택. 뷰포트 어디서나 드래그 (왼쪽 드래그가 기본 선택인 경우 W로 단축키 변경 가능)",
+      "category": "Selection",
+      "badge": "shortcut",
+      "mac": "B",
+      "win": "B"
+    },
+    {
+      "id": "b_select_circle",
+      "name": "Circle Select",
+      "description": "원형 브러시로 연속 선택. 스크롤로 브러시 크기 조절. C → 드래그 → RMB 종료",
+      "category": "Selection",
+      "badge": "shortcut",
+      "mac": "C",
+      "win": "C"
+    },
+    {
+      "id": "b_invert_select",
+      "name": "Invert Selection",
+      "description": "현재 선택 반전",
+      "category": "Selection",
+      "badge": "shortcut",
+      "mac": "Ctrl + I",
+      "win": "Ctrl + I"
+    },
+    {
+      "id": "b_loop_select",
+      "name": "Edge Loop Select",
+      "description": "엣지 루프 한 번에 선택. Alt + LMB. 여러 루프를 추가 선택하려면 Shift + Alt + LMB",
+      "category": "Selection",
+      "badge": "shortcut",
+      "mac": "Alt + LMB",
+      "win": "Alt + LMB"
+    },
+    {
+      "id": "b_linked_select",
+      "name": "Select Linked",
+      "description": "커서 아래 연결 메시 전체 선택. L은 hover, Ctrl+L은 선택된 것 기준으로 전체 선택. 아일랜드 단위 선택에 필수",
+      "category": "Selection",
+      "badge": "shortcut",
+      "mac": "L / Ctrl + L",
+      "win": "L / Ctrl + L"
+    },
+    {
+      "id": "b_select_less_more",
+      "name": "Select More / Less",
+      "description": "선택 영역을 인접 엘리먼트로 확장/축소. C4D Grow/Shrink Selection과 동일",
+      "category": "Selection",
+      "badge": "shortcut",
+      "mac": "Ctrl + NumPad + / -",
+      "win": "Ctrl + NumPad + / -"
+    },
+    {
+      "id": "b_checker_deselect",
+      "name": "Checker Deselect",
+      "description": "선택 영역에서 하나 건너 하나 해제. 균등 간격 루프 삽입 전 엣지 줄이기, 패턴 선택에 활용",
+      "category": "Selection",
+      "badge": "shortcut",
+      "mac": "Select Menu > Checker Deselect",
+      "win": "Select Menu > Checker Deselect"
+    },
+    {
+      "id": "b_vertex_mode",
+      "name": "Vertex Select Mode",
+      "description": "버텍스 선택 모드. 숫자 1",
+      "category": "Selection",
+      "badge": "shortcut",
+      "mac": "1",
+      "win": "1"
+    },
+    {
+      "id": "b_edge_mode",
+      "name": "Edge Select Mode",
+      "description": "엣지 선택 모드. 숫자 2",
+      "category": "Selection",
+      "badge": "shortcut",
+      "mac": "2",
+      "win": "2"
+    },
+    {
+      "id": "b_face_mode",
+      "name": "Face Select Mode",
+      "description": "페이스 선택 모드. 숫자 3",
+      "category": "Selection",
+      "badge": "shortcut",
+      "mac": "3",
+      "win": "3"
+    },
+    {
+      "id": "b_subsurf",
+      "name": "Subdivision Surface",
+      "description": "메시를 스무스 스무싱. Levels로 뷰포트/렌더 세분화 개별 설정. 하드서피스는 서포트 엣지(베벨)와 함께 사용. Ctrl+1~5로 빠른 레벨 설정",
+      "category": "Modifiers",
+      "badge": "modifier",
+      "mac": "Ctrl + 1~5",
+      "win": "Ctrl + 1~5"
+    },
+    {
+      "id": "b_mirror_mod",
+      "name": "Mirror Modifier",
+      "description": "축 대칭 미러 모델링. Clipping ON이면 중심선에서 버텍스가 겹치지 않음. 좌우/상하 대칭 오브젝트에 필수. 완성 후 Apply로 독립 메시 생성",
+      "category": "Modifiers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_solidify",
+      "name": "Solidify Modifier",
+      "description": "평면 메시에 두께 부여. Even Thickness로 곡면도 균일한 두께. 얇은 판재·천·패브릭·카드·금속 판 제작에 사용",
+      "category": "Modifiers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_bevel_mod",
+      "name": "Bevel Modifier",
+      "description": "엣지에 자동 베벨 적용. Angle 기반으로 특정 각도 이상 엣지만 처리. Weight 모드로 엣지별 베벨 강도 제어. 하드서피스 결과물 코너 처리에 비파괴적 방법",
+      "category": "Modifiers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_weighted_normal",
+      "name": "Weighted Normal Modifier",
+      "description": "폴리곤 면적·각도 기반으로 노멀 방향 최적화. Shade Smooth와 함께 써서 하드서피스 메시의 음영 자국 제거. 베벨 모디파이어 다음에 쌓아야 효과적",
+      "category": "Modifiers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_array",
+      "name": "Array Modifier",
+      "description": "오브젝트를 일정 간격으로 배열 복제. Count·Fit Curve·Fit Length 모드. Object Offset로 곡선 배열 가능. 울타리·계단·체인·타일 제작",
+      "category": "Modifiers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_boolean",
+      "name": "Boolean Modifier",
+      "description": "두 오브젝트 불리언 연산(합/차/교). Exact 모드가 정밀하지만 느림, Fast 모드는 빠르지만 겹침 오류 발생 가능. 결과가 지저분하면 Merge by Distance + Weighted Normal 적용 권장",
+      "category": "Modifiers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_shrinkwrap",
+      "name": "Shrinkwrap Modifier",
+      "description": "오브젝트를 다른 메시 표면에 래핑 투영. 데칼·스티커·의류 패턴을 3D 표면에 밀착. Project 모드로 방향 지정 가능",
+      "category": "Modifiers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_curve_mod",
+      "name": "Curve Modifier",
+      "description": "커브(스플라인)를 따라 오브젝트 변형. 파이프·튜브·케이블 경로 배치. Array + Curve 조합이 실무 표준 파이프라인",
+      "category": "Modifiers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_displace",
+      "name": "Displace Modifier",
+      "description": "텍스처 맵으로 버텍스 실제 이동. 지형·울퉁불퉁한 표면·천 주름 제작. 충분한 버텍스 해상도 필요. Strength·Midlevel로 높낮이 제어",
+      "category": "Modifiers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_screw",
+      "name": "Screw Modifier",
+      "description": "프로파일 커브를 나선형으로 회전 복제. 나사·스프링·코르크스크류·나선형 계단 제작. Angle·Steps·Iterations로 형태 제어",
+      "category": "Modifiers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_decimate",
+      "name": "Decimate Modifier",
+      "description": "폴리곤 수를 줄여 메시 최적화. Collapse·Un-Subdivide·Planar 세 가지 모드. 스컬프트 결과·스캔 데이터 경량화에 사용. Ratio로 남길 비율 설정",
+      "category": "Modifiers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_remesh",
+      "name": "Remesh Modifier",
+      "description": "메시를 균일한 복셀 기반 토폴로지로 재구성. Voxel Size로 해상도 조절. 스컬프팅 전 균일한 메시 필요할 때, 복잡한 불리언 결과 정리에 활용",
+      "category": "Modifiers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_geometry_nodes",
+      "name": "Geometry Nodes",
+      "description": "노드 기반 프로시저럴 모델링·인스턴싱·변형 시스템. 반복 패턴·식물·건축 디테일 자동화. C4D MoGraph의 Blender 버전. 매우 강력하지만 학습 곡선 있음",
+      "category": "Modifiers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_cycles",
+      "name": "Cycles Render Engine",
+      "description": "물리 기반 경로 추적 렌더러. 노이즈를 줄이려면 샘플 수 증가 또는 Denoising ON. 사실적인 글로벌 일루미네이션·코스틱 지원. 느리지만 가장 정확",
+      "category": "Shading",
+      "badge": "material",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_eevee",
+      "name": "EEVEE / EEVEE Next",
+      "description": "실시간 PBR 렌더러. 매우 빠르지만 근사치. Screen Space Reflections·Ambient Occlusion·Bloom 별도 활성화 필요. 모션그래픽·애니메이션 미리보기에 최적",
+      "category": "Shading",
+      "badge": "material",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_principled_bsdf",
+      "name": "Principled BSDF",
+      "description": "물리 기반 올인원 셰이더. Base Color·Metallic·Roughness·Normal 입력이 핵심. Subsurface로 피부 산란, Transmission으로 유리 표현. C4D Universal Material의 Blender 버전",
+      "category": "Shading",
+      "badge": "material",
+      "mac": "",
+      "win": "",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Principled BSDF",
+          "in": "Base Color"
+        },
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Normal Map",
+          "in": "Color"
+        },
+        {
+          "from": "Normal Map",
+          "out": "Normal",
+          "to": "Principled BSDF",
+          "in": "Normal"
+        },
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Principled BSDF",
+          "in": "Roughness"
+        },
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Principled BSDF",
+          "in": "Metallic"
+        },
+        {
+          "from": "Principled BSDF",
+          "out": "BSDF",
+          "to": "Material Output",
+          "in": "Surface"
+        }
+      ]
+    },
+    {
+      "id": "b_principled_volume",
+      "name": "Principled Volume",
+      "description": "볼류메트릭 안개·연기·구름 전용 셰이더. Density·Anisotropy·Absorption으로 제어. VDB 파일 임포트 후 연결 가능",
+      "category": "Shading",
+      "badge": "material",
+      "mac": "",
+      "win": "",
+      "node_graph": [
+        {
+          "from": "Principled Volume",
+          "out": "Volume",
+          "to": "Material Output",
+          "in": "Volume"
+        }
+      ]
+    },
+    {
+      "id": "b_emission_shader",
+      "name": "Emission Shader",
+      "description": "자체 발광 셰이더. Strength로 강도 조절. Cycles에서는 실제 조명 역할 (Light Source ON 필요). 네온·LED·화면 표현",
+      "category": "Shading",
+      "badge": "material",
+      "mac": "",
+      "win": "",
+      "node_graph": [
+        {
+          "from": "RGB Spectrum",
+          "out": "Color",
+          "to": "Emission Shader",
+          "in": "Color"
+        },
+        {
+          "from": "Emission Shader",
+          "out": "Emission",
+          "to": "Material Output",
+          "in": "Surface"
+        }
+      ]
+    },
+    {
+      "id": "b_mix_shader",
+      "name": "Mix Shader",
+      "description": "두 셰이더를 Factor(0~1)로 블렌딩. Fac에 텍스처 연결해 마스크 기반 재질 혼합. 젖은 표면·레이어드 재질 표현",
+      "category": "Shading",
+      "badge": "material",
+      "mac": "",
+      "win": "",
+      "node_graph": [
+        {
+          "from": "Principled BSDF",
+          "out": "BSDF",
+          "to": "Mix Shader",
+          "in": "Shader 1"
+        },
+        {
+          "from": "Transparent BSDF",
+          "out": "BSDF",
+          "to": "Mix Shader",
+          "in": "Shader 2"
+        },
+        {
+          "from": "Image Texture",
+          "out": "Alpha",
+          "to": "Mix Shader",
+          "in": "Fac"
+        },
+        {
+          "from": "Mix Shader",
+          "out": "Shader",
+          "to": "Material Output",
+          "in": "Surface"
+        }
+      ]
+    },
+    {
+      "id": "b_add_node",
+      "name": "Add Node (Shader Editor)",
+      "description": "셰이더 에디터에 노드 추가. Shift+A 후 검색으로 노드 찾기. 자주 쓰는 노드는 드래그 전 이름 타이핑이 가장 빠름",
+      "category": "Shading",
+      "badge": "shortcut",
+      "mac": "Shift + A",
+      "win": "Shift + A"
+    },
+    {
+      "id": "b_node_preview",
+      "name": "Node Preview",
+      "description": "노드 출력을 뷰포트에 직접 미리보기. Cycles에서만 작동. 어떤 노드가 어떤 값을 출력하는지 즉시 확인. 셰이더 디버깅 필수 단축키",
+      "category": "Shading",
+      "badge": "shortcut",
+      "mac": "Ctrl + Shift + LMB",
+      "win": "Ctrl + Shift + LMB"
+    },
+    {
+      "id": "b_image_texture_node",
+      "name": "Image Texture Node",
+      "description": "외부 이미지를 셰이더에 연결. Color Space: sRGB(알베도) / Non-Color(노멀·러프니스·AO·메탈릭). Vector 입력에 UV Map 또는 Texture Coordinate 연결",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "node_graph": [
+        {
+          "from": "Texture Coordinate",
+          "out": "UV",
+          "to": "Mapping",
+          "in": "Vector"
+        },
+        {
+          "from": "Mapping",
+          "out": "Vector",
+          "to": "Image Texture",
+          "in": "Vector"
+        },
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Principled BSDF",
+          "in": "Base Color"
+        }
+      ]
+    },
+    {
+      "id": "b_normal_map_node",
+      "name": "Normal Map Node",
+      "description": "노멀 맵 이미지를 Principled BSDF Normal 입력에 연결하는 변환 노드. Image Texture(Non-Color) → Normal Map → BSDF Normal 순서 필수. Strength로 강도 조절",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Normal Map",
+          "in": "Color"
+        },
+        {
+          "from": "Normal Map",
+          "out": "Normal",
+          "to": "Principled BSDF",
+          "in": "Normal"
+        }
+      ]
+    },
+    {
+      "id": "b_bump_node",
+      "name": "Bump Node",
+      "description": "Height(흑백) 맵을 노멀로 변환. 실제 버텍스 이동 없이 표면 요철 표현. Distance로 강도 조절. Normal Map보다 덜 정확하지만 기존 Height 맵 재활용 가능",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Bump",
+          "in": "Height"
+        },
+        {
+          "from": "Bump",
+          "out": "Normal",
+          "to": "Principled BSDF",
+          "in": "Normal"
+        }
+      ]
+    },
+    {
+      "id": "b_displacement_node",
+      "name": "Displacement Node",
+      "description": "Height 맵으로 실제 버텍스 이동. Material Settings에서 Displacement Only 또는 Both 선택 필요. 충분한 메시 세분화 필수. Adaptive Subdivision과 함께 사용하면 렌더 시 자동 세분화",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Displacement",
+          "in": "Height"
+        },
+        {
+          "from": "Displacement",
+          "out": "Displacement",
+          "to": "Material Output",
+          "in": "Displacement"
+        }
+      ]
+    },
+    {
+      "id": "b_texture_coord",
+      "name": "Texture Coordinate Node",
+      "description": "UV·Generated·Object·Camera·Normal 등 좌표 유형 제공. UV Unwrap된 메시엔 UV, 간단한 프로시저럴에는 Object 또는 Generated 사용",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "node_graph": [
+        {
+          "from": "Texture Coordinate",
+          "out": "UV",
+          "to": "Mapping",
+          "in": "Vector"
+        },
+        {
+          "from": "Mapping",
+          "out": "Vector",
+          "to": "Image Texture",
+          "in": "Vector"
+        }
+      ]
+    },
+    {
+      "id": "b_mapping_node",
+      "name": "Mapping Node",
+      "description": "텍스처의 위치·회전·스케일 제어. Texture Coordinate 다음에 연결해 타일링·오프셋 조절. C4D UVW Transform 노드와 동일한 역할",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "node_graph": [
+        {
+          "from": "Texture Coordinate",
+          "out": "UV",
+          "to": "Mapping",
+          "in": "Vector"
+        },
+        {
+          "from": "Mapping",
+          "out": "Vector",
+          "to": "Image Texture",
+          "in": "Vector"
+        }
+      ]
+    },
+    {
+      "id": "b_musgrave",
+      "name": "Musgrave Texture",
+      "description": "프랙탈 기반 프로시저럴 텍스처. 지형·구름·유기적 패턴. Scale·Detail·Dimension 파라미터로 다양한 형태. Displacement에 연결해 지형 생성에 자주 사용",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "node_graph": [
+        {
+          "from": "Texture Coordinate",
+          "out": "Generated",
+          "to": "Musgrave Texture",
+          "in": "Vector"
+        },
+        {
+          "from": "Musgrave Texture",
+          "out": "Height",
+          "to": "ColorRamp",
+          "in": "Fac"
+        },
+        {
+          "from": "ColorRamp",
+          "out": "Color",
+          "to": "Principled BSDF",
+          "in": "Base Color"
+        }
+      ]
+    },
+    {
+      "id": "b_noise_texture",
+      "name": "Noise Texture",
+      "description": "Perlin 노이즈 기반 프로시저럴 패턴. Scale·Detail·Roughness·Distortion으로 제어. 러프니스 변화·오염·번짐 효과. ColorRamp 연결해 범위와 색상 정제",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "node_graph": [
+        {
+          "from": "Texture Coordinate",
+          "out": "Generated",
+          "to": "Noise Texture",
+          "in": "Vector"
+        },
+        {
+          "from": "Noise Texture",
+          "out": "Color",
+          "to": "ColorRamp",
+          "in": "Fac"
+        },
+        {
+          "from": "ColorRamp",
+          "out": "Color",
+          "to": "Principled BSDF",
+          "in": "Roughness"
+        }
+      ]
+    },
+    {
+      "id": "b_voronoi_texture",
+      "name": "Voronoi Texture",
+      "description": "셀 패턴 기반 프로시저럴 텍스처. 돌·콘크리트·거품·가죽 패턴. Distance to Edge 출력으로 셀 경계선 추출 가능",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "node_graph": [
+        {
+          "from": "Texture Coordinate",
+          "out": "Generated",
+          "to": "Voronoi Texture",
+          "in": "Vector"
+        },
+        {
+          "from": "Voronoi Texture",
+          "out": "Distance",
+          "to": "ColorRamp",
+          "in": "Fac"
+        },
+        {
+          "from": "ColorRamp",
+          "out": "Color",
+          "to": "Principled BSDF",
+          "in": "Base Color"
+        }
+      ]
+    },
+    {
+      "id": "b_wave_texture",
+      "name": "Wave Texture",
+      "description": "파형 기반 줄무늬·동심원 패턴. Bands/Rings 모드. Distortion으로 뒤틀림 추가. 나무결·물결·나이테 패턴 베이스로 활용",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "node_graph": [
+        {
+          "from": "Texture Coordinate",
+          "out": "Generated",
+          "to": "Wave Texture",
+          "in": "Vector"
+        },
+        {
+          "from": "Wave Texture",
+          "out": "Color",
+          "to": "Principled BSDF",
+          "in": "Base Color"
+        }
+      ]
+    },
+    {
+      "id": "b_color_ramp",
+      "name": "ColorRamp Node",
+      "description": "흑백 값을 색상 그라데이션으로 매핑하거나 값 범위를 조정. 노이즈 텍스처 후처리, 마스크 대비 강화, 색상 조정에 가장 많이 쓰이는 유틸리티 노드",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "node_graph": [
+        {
+          "from": "Noise Texture",
+          "out": "Fac",
+          "to": "ColorRamp",
+          "in": "Fac"
+        },
+        {
+          "from": "ColorRamp",
+          "out": "Color",
+          "to": "Principled BSDF",
+          "in": "Roughness"
+        }
+      ]
+    },
+    {
+      "id": "b_mix_rgb",
+      "name": "Mix Color Node",
+      "description": "두 색상/텍스처 블렌딩. Multiply·Overlay·Screen 등 블렌드 모드 지원. AO 맵 곱하기, 텍스처 레이어 합성에 활용",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Mix Color",
+          "in": "A"
+        },
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Mix Color",
+          "in": "B"
+        },
+        {
+          "from": "Mix Color",
+          "out": "Result",
+          "to": "Principled BSDF",
+          "in": "Base Color"
+        }
+      ]
+    },
+    {
+      "id": "b_uv_unwrap",
+      "name": "UV Unwrap",
+      "description": "Seam을 기준으로 메시 UV 전개. Edit Mode에서 U 누른 뒤 Unwrap 선택. Seam이 없으면 자동 분리 시도. Angle Based(권장) 또는 Conformal 알고리즘",
+      "category": "UV",
+      "badge": "shortcut",
+      "mac": "U > Unwrap",
+      "win": "U > Unwrap"
+    },
+    {
+      "id": "b_smart_uv",
+      "name": "Smart UV Project",
+      "description": "폴리곤 각도 기반 자동 UV 생성. Seam 지정 없이 즉시 UV 생성. 정밀도보다 속도가 중요한 배경 오브젝트, 건물 블록, 소품에 적합",
+      "category": "UV",
+      "badge": "shortcut",
+      "mac": "U > Smart UV Project",
+      "win": "U > Smart UV Project"
+    },
+    {
+      "id": "b_lightmap_pack",
+      "name": "Lightmap Pack",
+      "description": "폴리곤 넓이 비례로 UV 아일랜드 생성 후 팩. 라이트맵 베이킹용. 텍셀 밀도보다 면적 비율이 중요할 때",
+      "category": "UV",
+      "badge": "shortcut",
+      "mac": "U > Lightmap Pack",
+      "win": "U > Lightmap Pack"
+    },
+    {
+      "id": "b_uv_seam",
+      "name": "Mark Seam",
+      "description": "엣지를 UV 시임으로 지정. 눈에 보이지 않는 곳(아랫면·접힌 안쪽)에 배치 권장. 시임이 텍스처에서 끊겨 보일 수 있으므로 위치가 중요. Ctrl+E > Mark Seam",
+      "category": "UV",
+      "badge": "shortcut",
+      "mac": "Ctrl + E > Mark Seam",
+      "win": "Ctrl + E > Mark Seam"
+    },
+    {
+      "id": "b_clear_seam",
+      "name": "Clear Seam",
+      "description": "지정된 Seam 제거. 잘못 지정된 시임 수정 시 사용. Ctrl+E > Clear Seam",
+      "category": "UV",
+      "badge": "shortcut",
+      "mac": "Ctrl + E > Clear Seam",
+      "win": "Ctrl + E > Clear Seam"
+    },
+    {
+      "id": "b_uv_pack",
+      "name": "Pack Islands",
+      "description": "UV 아일랜드를 0~1 공간 안에 자동 배치. Margin으로 아일랜드 간 여백 설정 (베이킹 시 출혈 방지에 중요). UV Editor에서 실행",
+      "category": "UV",
+      "badge": "shortcut",
+      "mac": "Ctrl + P (UV Editor)",
+      "win": "Ctrl + P (UV Editor)"
+    },
+    {
+      "id": "b_uv_follow_active",
+      "name": "Follow Active Quads",
+      "description": "활성 쿼드의 UV 방향을 기준으로 인접 쿼드 UV 정렬. 반복 패턴 타일링 텍스처를 균일하게 입힐 때 유용. 벽·바닥·타일 작업에 필수",
+      "category": "UV",
+      "badge": "shortcut",
+      "mac": "U > Follow Active Quads",
+      "win": "U > Follow Active Quads"
+    },
+    {
+      "id": "b_uv_average_scale",
+      "name": "Average Island Scale",
+      "description": "모든 UV 아일랜드를 동일한 텍셀 밀도(크기)로 정규화. 팩 전에 반드시 실행해야 텍스처 해상도 균일. UV Editor > UV 메뉴",
+      "category": "UV",
+      "badge": "shortcut",
+      "mac": "UV > Average Island Scale",
+      "win": "UV > Average Island Scale"
+    },
+    {
+      "id": "b_uv_stitch",
+      "name": "Stitch",
+      "description": "UV Editor에서 분리된 UV 아일랜드 경계를 봉합. 시임을 합쳐 연속된 UV 흐름 복원. V로 빠르게 실행",
+      "category": "UV",
+      "badge": "shortcut",
+      "mac": "V (UV Editor)",
+      "win": "V (UV Editor)"
+    },
+    {
+      "id": "b_uv_pin",
+      "name": "Pin / Unpin UV",
+      "description": "UV 버텍스 위치를 고정(핀). 핀 설정 후 Unwrap 재실행 시 핀된 버텍스는 이동하지 않음. 경계 UV를 직선으로 고정할 때 활용",
+      "category": "UV",
+      "badge": "shortcut",
+      "mac": "P / Alt + P (UV Editor)",
+      "win": "P / Alt + P (UV Editor)"
+    },
+    {
+      "id": "b_texturepaint_mode",
+      "name": "Texture Paint Mode",
+      "description": "3D 뷰포트에서 직접 메시 위에 페인팅. 오브젝트에 UV와 이미지 텍스처가 있어야 작동. Draw·Soften·Smear·Clone·Fill 브러시 지원",
+      "category": "Texture Paint",
+      "badge": "texture",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_paint_draw",
+      "name": "Draw Brush",
+      "description": "기본 페인트 브러시. F로 브러시 크기, Shift+F로 강도 조절. Texture Mask로 브러시 모양 커스텀. 알베도·러프니스·AO 맵 직접 편집",
+      "category": "Texture Paint",
+      "badge": "texture",
+      "mac": "F (size) / Shift + F (strength)",
+      "win": "F (size) / Shift + F (strength)"
+    },
+    {
+      "id": "b_paint_fill",
+      "name": "Fill Brush",
+      "description": "UV 아일랜드 또는 전체 텍스처를 단색/텍스처로 채움. 새 텍스처 초기화, 특정 아일랜드 배경색 채우기에 사용",
+      "category": "Texture Paint",
+      "badge": "texture",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_paint_clone",
+      "name": "Clone Brush",
+      "description": "이미지의 다른 영역을 샘플링해 복사. Photoshop의 Clone Stamp와 동일. 텍스처 이음새 감추기, 반복 패턴 만들기에 활용",
+      "category": "Texture Paint",
+      "badge": "texture",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_paint_smear",
+      "name": "Smear Brush",
+      "description": "페인트를 드래그 방향으로 번짐. 경계를 부드럽게 블렌딩하거나 오염·얼룩 효과 표현",
+      "category": "Texture Paint",
+      "badge": "texture",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_paint_mask",
+      "name": "Face Masking (Paint)",
+      "description": "특정 폴리곤 페이스만 페인팅 가능하도록 마스킹. 여러 머티리얼 슬롯 중 원하는 영역만 칠할 때. Face Select Masking 버튼으로 활성화",
+      "category": "Texture Paint",
+      "badge": "texture",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_paint_project",
+      "name": "Project Paint (Stencil)",
+      "description": "스텐실 이미지를 뷰포트에 고정 후 3D 메시에 투영 페인팅. 로고·데칼·문양을 3D 표면에 직접 입힐 때 사용",
+      "category": "Texture Paint",
+      "badge": "texture",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_bake_diffuse",
+      "name": "Bake — Diffuse / Combined",
+      "description": "씬 조명과 재질을 텍스처에 베이크. Selected to Active 모드로 하이폴리→로우폴리 Normal Map 베이킹 가능. 게임 엔진 익스포트, 텍스처 세트 생성에 필수",
+      "category": "Texture Paint",
+      "badge": "texture",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_sculpt_mode",
+      "name": "Sculpt Mode",
+      "description": "다이나믹 브러시로 오가닉 형태 조각. Dyntopo로 필요한 부위만 자동 세분화. 상세한 주름·피부·근육 표현. 스컬프팅 후 Retopology 작업 권장",
+      "category": "Sculpt",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_sculpt_dyntopo",
+      "name": "Dynamic Topology (Dyntopo)",
+      "description": "조각 영역에 자동으로 메시 추가/제거. 해상도 제한 없이 자유롭게 조각 가능. Detail Size·Detail Flood Fill로 세밀도 조절. UV 유지 안 되므로 형태 확정 후 리토폴로지 필수",
+      "category": "Sculpt",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_sculpt_multires",
+      "name": "Multiresolution Modifier",
+      "description": "서브디비전 레벨별로 독립적인 디테일 조각. 저해상도 형태 → 고해상도 디테일 레이어 분리. 노멀맵 베이킹 가능. 전통적인 게임 캐릭터 워크플로우",
+      "category": "Sculpt",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_insert_keyframe",
+      "name": "Insert Keyframe",
+      "description": "현재 프레임에 키프레임 삽입. I 누르면 어떤 채널에 삽입할지 메뉴 표시. Location·Rotation·Scale·All 중 선택",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "I",
+      "win": "I"
+    },
+    {
+      "id": "b_delete_keyframe",
+      "name": "Delete Keyframe",
+      "description": "현재 프레임의 키프레임 삭제",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "Alt + I",
+      "win": "Alt + I"
+    },
+    {
+      "id": "b_play_anim",
+      "name": "Play / Pause",
+      "description": "애니메이션 재생/정지",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "Space",
+      "win": "Space"
+    },
+    {
+      "id": "b_prev_frame",
+      "name": "Previous Frame",
+      "description": "한 프레임 뒤로",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "Left Arrow",
+      "win": "Left Arrow"
+    },
+    {
+      "id": "b_next_frame",
+      "name": "Next Frame",
+      "description": "한 프레임 앞으로",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "Right Arrow",
+      "win": "Right Arrow"
+    },
+    {
+      "id": "b_graph_editor",
+      "name": "Graph Editor",
+      "description": "F-커브 기반 키프레임 인터폴레이션 에디터. 이징·바운스·커스텀 커브 직접 편집. T로 커브 보간 유형 전환 (Bezier·Constant·Linear)",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_nla_editor",
+      "name": "NLA Editor",
+      "description": "논-리니어 애니메이션 에디터. 액션 클립을 트랙 단위로 쌓고 재사용. 걷기·달리기 액션 믹싱, 반복 사이클 조합",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "b_numpad_perspective",
+      "name": "Toggle Perspective/Ortho",
+      "description": "퍼스펙티브 ↔ 직교 뷰 전환. Numpad 없는 맥북은 View Pie Menu(~) 또는 헤더 뷰 메뉴 사용",
+      "category": "Viewport",
+      "badge": "shortcut",
+      "mac": "Numpad 5",
+      "win": "Numpad 5"
+    },
+    {
+      "id": "b_numpad_front",
+      "name": "Front View",
+      "description": "정면 직교 뷰",
+      "category": "Viewport",
+      "badge": "shortcut",
+      "mac": "Numpad 1",
+      "win": "Numpad 1"
+    },
+    {
+      "id": "b_numpad_right",
+      "name": "Right View",
+      "description": "우측 직교 뷰",
+      "category": "Viewport",
+      "badge": "shortcut",
+      "mac": "Numpad 3",
+      "win": "Numpad 3"
+    },
+    {
+      "id": "b_numpad_top",
+      "name": "Top View",
+      "description": "탑 직교 뷰",
+      "category": "Viewport",
+      "badge": "shortcut",
+      "mac": "Numpad 7",
+      "win": "Numpad 7"
+    },
+    {
+      "id": "b_numpad_camera",
+      "name": "Camera View",
+      "description": "활성 카메라 시점으로 전환. 카메라 안에서 G+MMB 드래그로 카메라 패닝 가능",
+      "category": "Viewport",
+      "badge": "shortcut",
+      "mac": "Numpad 0",
+      "win": "Numpad 0"
+    },
+    {
+      "id": "b_frame_selected",
+      "name": "Frame Selected",
+      "description": "선택 오브젝트를 화면 중앙에 맞춤",
+      "category": "Viewport",
+      "badge": "shortcut",
+      "mac": "Numpad .",
+      "win": "Numpad ."
+    },
+    {
+      "id": "b_frame_all",
+      "name": "Frame All",
+      "description": "씬 전체를 화면에 맞춤",
+      "category": "Viewport",
+      "badge": "shortcut",
+      "mac": "Home",
+      "win": "Home"
+    },
+    {
+      "id": "b_local_view",
+      "name": "Local View",
+      "description": "선택 오브젝트만 격리해서 보기. 복잡한 씬에서 특정 오브젝트에만 집중. 다시 Numpad /로 전체 씬 복귀",
+      "category": "Viewport",
+      "badge": "shortcut",
+      "mac": "Numpad /",
+      "win": "Numpad /"
+    },
+    {
+      "id": "b_render",
+      "name": "Render Image",
+      "description": "현재 씬 렌더. 결과는 Image Editor에 자동 저장 필요 (Alt+S). F11로 마지막 렌더 다시 보기",
+      "category": "Viewport",
+      "badge": "shortcut",
+      "mac": "F12",
+      "win": "F12"
+    },
+    {
+      "id": "b_render_anim",
+      "name": "Render Animation",
+      "description": "애니메이션 시퀀스 전체 렌더. Output 경로·포맷 설정 필수. EXR 시퀀스로 출력 후 Video Sequencer 또는 AE에서 합성 권장",
+      "category": "Viewport",
+      "badge": "shortcut",
+      "mac": "Ctrl + F12",
+      "win": "Ctrl + F12"
+    },
+    {
+      "id": "b_fresnel",
+      "name": "Fresnel Node",
+      "description": "카메라 각도에 따른 반사율(0=정면, 1=엣지)을 출력. IOR로 재질별 엣지 반사 강도 조절",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "도장 금속·코팅·젖은 표면 엣지 반사 마스크. Mix Shader Factor에 꽂아 정면은 무광, 엣지는 반사로",
+      "node_graph": [
+        {
+          "from": "Fresnel",
+          "out": "Fac",
+          "to": "Mix Shader",
+          "in": "Fac"
+        },
+        {
+          "from": "Diffuse BSDF",
+          "out": "BSDF",
+          "to": "Mix Shader",
+          "in": "Shader 1"
+        },
+        {
+          "from": "Glossy BSDF",
+          "out": "BSDF",
+          "to": "Mix Shader",
+          "in": "Shader 2"
+        },
+        {
+          "from": "Mix Shader",
+          "out": "Shader",
+          "to": "Material Output",
+          "in": "Surface"
+        }
+      ]
+    },
+    {
+      "id": "b_layer_weight",
+      "name": "Layer Weight Node",
+      "description": "Fresnel·Facing 두 출력 제공. Facing은 정면=1/엣지=0으로 Fresnel 반대. 블렌드 값으로 강도 조절",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "피부 SSS 엣지 마스크, 벨벳 엣지 밝기, 코팅 재질. Fresnel보다 컨트롤이 직관적",
+      "node_graph": [
+        {
+          "from": "Layer Weight",
+          "out": "Fresnel",
+          "to": "Mix Shader",
+          "in": "Fac"
+        },
+        {
+          "from": "Principled BSDF",
+          "out": "BSDF",
+          "to": "Mix Shader",
+          "in": "Shader 1"
+        },
+        {
+          "from": "Emission Shader",
+          "out": "Emission",
+          "to": "Mix Shader",
+          "in": "Shader 2"
+        },
+        {
+          "from": "Mix Shader",
+          "out": "Shader",
+          "to": "Material Output",
+          "in": "Surface"
+        }
+      ]
+    },
+    {
+      "id": "b_ao_node",
+      "name": "Ambient Occlusion Node",
+      "description": "렌더타임 AO 값을 출력. Distance로 영향 범위 조절. 오목한 부위 자동 감지",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "틈새·오목 부위에 오염·녹·먼지 집중. AO 맵 없이 프로시저럴로 구현",
+      "node_graph": [
+        {
+          "from": "Ambient Occlusion",
+          "out": "AO",
+          "to": "Mix Color",
+          "in": "Fac"
+        },
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Mix Color",
+          "in": "A"
+        },
+        {
+          "from": "RGB Spectrum",
+          "out": "Color",
+          "to": "Mix Color",
+          "in": "B"
+        },
+        {
+          "from": "Mix Color",
+          "out": "Result",
+          "to": "Principled BSDF",
+          "in": "Base Color"
+        }
+      ]
+    },
+    {
+      "id": "b_light_path",
+      "name": "Light Path Node",
+      "description": "Is Camera Ray / Is Shadow Ray / Is Reflection Ray 등 현재 레이 타입 판별. Cycles 전용",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "HDRI 배경은 반사에만 보이고 카메라에는 단색으로 표시. 그림자 전용 재질 제어",
+      "node_graph": [
+        {
+          "from": "Light Path",
+          "out": "Is Camera Ray",
+          "to": "Mix Shader",
+          "in": "Fac"
+        },
+        {
+          "from": "Background (Color)",
+          "out": "Background",
+          "to": "Mix Shader",
+          "in": "Shader 1"
+        },
+        {
+          "from": "Background (HDRI)",
+          "out": "Background",
+          "to": "Mix Shader",
+          "in": "Shader 2"
+        },
+        {
+          "from": "Mix Shader",
+          "out": "Shader",
+          "to": "World Output",
+          "in": "Surface"
+        }
+      ]
+    },
+    {
+      "id": "b_object_info",
+      "name": "Object Info Node",
+      "description": "오브젝트의 Random·Location·Color 정보 출력. Random 출력이 인스턴스마다 고유 값",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "Geometry Nodes·파티클로 배치한 나무·돌·풀이 모두 같은 색상인 문제 해결. Random→ColorRamp로 다양한 색 자동 부여",
+      "node_graph": [
+        {
+          "from": "Object Info",
+          "out": "Random",
+          "to": "ColorRamp",
+          "in": "Fac"
+        },
+        {
+          "from": "ColorRamp",
+          "out": "Color",
+          "to": "Principled BSDF",
+          "in": "Base Color"
+        },
+        {
+          "from": "Principled BSDF",
+          "out": "BSDF",
+          "to": "Material Output",
+          "in": "Surface"
+        }
+      ]
+    },
+    {
+      "id": "b_uv_map_node",
+      "name": "UV Map Node",
+      "description": "오브젝트의 특정 UV 채널을 선택해 텍스처 Vector 입력에 전달. 기본 UV 외 추가 UV 채널 사용 시 필요",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "데칼·라이트맵용 2번째 UV 채널 분리. 하나의 오브젝트에 두 세트의 UV로 서로 다른 텍스처 적용",
+      "node_graph": [
+        {
+          "from": "UV Map",
+          "out": "UV",
+          "to": "Mapping",
+          "in": "Vector"
+        },
+        {
+          "from": "Mapping",
+          "out": "Vector",
+          "to": "Image Texture",
+          "in": "Vector"
+        },
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Principled BSDF",
+          "in": "Base Color"
+        }
+      ]
+    },
+    {
+      "id": "b_vertex_color_node",
+      "name": "Vertex Color Node",
+      "description": "버텍스 페인팅으로 칠한 색상 데이터를 셰이더로 가져옴. Color/Alpha 출력 제공",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "텍스처 없이 색상 입히기(게임 아트). 버텍스 마스크로 두 재질 블렌딩. 특정 영역에 오염·도색 표현",
+      "node_graph": [
+        {
+          "from": "Vertex Color",
+          "out": "Color",
+          "to": "Mix Shader",
+          "in": "Fac"
+        },
+        {
+          "from": "Principled BSDF (A)",
+          "out": "BSDF",
+          "to": "Mix Shader",
+          "in": "Shader 1"
+        },
+        {
+          "from": "Principled BSDF (B)",
+          "out": "BSDF",
+          "to": "Mix Shader",
+          "in": "Shader 2"
+        },
+        {
+          "from": "Mix Shader",
+          "out": "Shader",
+          "to": "Material Output",
+          "in": "Surface"
+        }
+      ]
+    },
+    {
+      "id": "b_hue_sat",
+      "name": "Hue Saturation Value",
+      "description": "색조(Hue)·채도(Saturation)·명도(Value) 조정. 같은 텍스처로 색만 다른 재질 변형 생성",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "동일 텍스처 세트로 색상 배리에이션 만들기. 채도=0이면 흑백 변환",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Hue Saturation Value",
+          "in": "Color"
+        },
+        {
+          "from": "Hue Saturation Value",
+          "out": "Color",
+          "to": "Principled BSDF",
+          "in": "Base Color"
+        }
+      ]
+    },
+    {
+      "id": "b_brightness_contrast",
+      "name": "Brightness / Contrast",
+      "description": "텍스처 밝기와 대비 조정. 극단적인 값으로 마스크 흑백화 가능",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "Roughness 맵이 너무 밝거나 어두울 때 보정. Noise 텍스처 대비 극대화로 날카로운 마스크 만들기",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Brightness/Contrast",
+          "in": "Color"
+        },
+        {
+          "from": "Brightness/Contrast",
+          "out": "Color",
+          "to": "Principled BSDF",
+          "in": "Roughness"
+        }
+      ]
+    },
+    {
+      "id": "b_invert_color",
+      "name": "Invert Color",
+      "description": "색상/값을 반전 (1 - 입력값). 마스크 뒤집기, DirectX→OpenGL 노멀 G채널 반전에 사용",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "DX 노멀맵의 G채널만 반전: Separate Color → Invert → Combine Color → Normal Map. 마스크 영역 반전",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Separate Color",
+          "in": "Color"
+        },
+        {
+          "from": "Separate Color",
+          "out": "Green",
+          "to": "Invert Color",
+          "in": "Color"
+        },
+        {
+          "from": "Invert Color",
+          "out": "Color",
+          "to": "Combine Color",
+          "in": "Green"
+        },
+        {
+          "from": "Combine Color",
+          "out": "Color",
+          "to": "Normal Map",
+          "in": "Color"
+        }
+      ]
+    },
+    {
+      "id": "b_gamma_node",
+      "name": "Gamma Node",
+      "description": "감마 보정. Gamma 2.2 적용으로 선형 색공간 보정. 값 범위의 비선형 조정",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "Non-color 텍스처가 이상하게 밝을 때 감마 조정. Image Texture Color Space를 Non-Color로 설정하는 게 더 권장됨",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Gamma",
+          "in": "Color"
+        },
+        {
+          "from": "Gamma",
+          "out": "Color",
+          "to": "Principled BSDF",
+          "in": "Base Color"
+        }
+      ]
+    },
+    {
+      "id": "b_rgb_to_bw",
+      "name": "RGB to BW",
+      "description": "컬러 이미지를 밝기 기반 흑백 단일값으로 변환",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "컬러 텍스처에서 마스크 추출. 컬러 노이즈를 Roughness/Metallic용 흑백 값으로 변환",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "RGB to BW",
+          "in": "Color"
+        },
+        {
+          "from": "RGB to BW",
+          "out": "Val",
+          "to": "Principled BSDF",
+          "in": "Roughness"
+        }
+      ]
+    },
+    {
+      "id": "b_separate_combine_color",
+      "name": "Separate / Combine Color",
+      "description": "R·G·B·A 채널 분리(Separate) 또는 합성(Combine). ORM 채널 패킹 해제에 필수",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "ORM 텍스처(R=AO, G=Roughness, B=Metallic) 분리: Separate Color → 각 채널을 해당 입력으로",
+      "node_graph": [
+        {
+          "from": "Image Texture (ORM)",
+          "out": "Color",
+          "to": "Separate Color",
+          "in": "Color"
+        },
+        {
+          "from": "Separate Color",
+          "out": "Red",
+          "to": "Principled BSDF",
+          "in": "Ambient Occlusion"
+        },
+        {
+          "from": "Separate Color",
+          "out": "Green",
+          "to": "Principled BSDF",
+          "in": "Roughness"
+        },
+        {
+          "from": "Separate Color",
+          "out": "Blue",
+          "to": "Principled BSDF",
+          "in": "Metallic"
+        }
+      ]
+    },
+    {
+      "id": "b_math_node",
+      "name": "Math Node",
+      "description": "Add·Subtract·Multiply·Divide·Power·Clamp·Sine 등 수학 연산. 노드 값 미세 조정의 핵심",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "Roughness 강도 배수 조절(Multiply), 0~1 범위 강제(Clamp), Fresnel 엣지 날카롭게(Power)",
+      "node_graph": [
+        {
+          "from": "Fresnel",
+          "out": "Fac",
+          "to": "Math (Power)",
+          "in": "Value"
+        },
+        {
+          "from": "Math (Power)",
+          "out": "Value",
+          "to": "ColorRamp",
+          "in": "Fac"
+        },
+        {
+          "from": "ColorRamp",
+          "out": "Color",
+          "to": "Mix Shader",
+          "in": "Fac"
+        }
+      ]
+    },
+    {
+      "id": "b_vector_math",
+      "name": "Vector Math Node",
+      "description": "벡터 Add·Subtract·Multiply·Normalize·Dot Product 등. 노멀 합성, UV 변형, 방향 계산",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "두 노멀 맵 합치기(Add 모드). UV 좌표 수식 제어. 노멀 방향 조작",
+      "node_graph": [
+        {
+          "from": "Normal Map A",
+          "out": "Normal",
+          "to": "Vector Math (Add)",
+          "in": "Vector"
+        },
+        {
+          "from": "Normal Map B",
+          "out": "Normal",
+          "to": "Vector Math (Add)",
+          "in": "Vector"
+        },
+        {
+          "from": "Vector Math (Add)",
+          "out": "Vector",
+          "to": "Principled BSDF",
+          "in": "Normal"
+        }
+      ]
+    },
+    {
+      "id": "b_float_curve",
+      "name": "Float Curve Node",
+      "description": "흑백 값을 커브로 커스텀 리매핑. ColorRamp의 흑백 전용 버전으로 더 세밀한 조정 가능",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "Noise 텍스처 어두운 부분만 살리기. 러프니스 값의 비선형 분포 조정",
+      "node_graph": [
+        {
+          "from": "Noise Texture",
+          "out": "Fac",
+          "to": "Float Curve",
+          "in": "Value"
+        },
+        {
+          "from": "Float Curve",
+          "out": "Value",
+          "to": "Principled BSDF",
+          "in": "Roughness"
+        }
+      ]
+    },
+    {
+      "id": "b_separate_xyz",
+      "name": "Separate / Combine XYZ",
+      "description": "벡터(Vector)의 X·Y·Z 값을 개별로 분리하거나 합성. UV 개별 축 독립 조작에 사용",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "X축만 타일링 다르게 설정. Mapping Node 없이 UV Y좌표만 스케일 조정",
+      "node_graph": [
+        {
+          "from": "Texture Coordinate",
+          "out": "UV",
+          "to": "Separate XYZ",
+          "in": "Vector"
+        },
+        {
+          "from": "Separate XYZ",
+          "out": "X",
+          "to": "Math (Multiply)",
+          "in": "Value"
+        },
+        {
+          "from": "Math (Multiply)",
+          "out": "Value",
+          "to": "Combine XYZ",
+          "in": "X"
+        },
+        {
+          "from": "Separate XYZ",
+          "out": "Y",
+          "to": "Combine XYZ",
+          "in": "Y"
+        },
+        {
+          "from": "Combine XYZ",
+          "out": "Vector",
+          "to": "Image Texture",
+          "in": "Vector"
+        }
+      ]
+    },
+    {
+      "id": "b_gradient_texture",
+      "name": "Gradient Texture",
+      "description": "Linear·Radial·Quadratic 등 그라데이션 패턴 출력. ColorRamp로 색상 매핑",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "위치 기반 두 재질 블렌딩 마스크. 상단→하단 색상 변화. 방사형 패턴",
+      "node_graph": [
+        {
+          "from": "Texture Coordinate",
+          "out": "Generated",
+          "to": "Gradient Texture",
+          "in": "Vector"
+        },
+        {
+          "from": "Gradient Texture",
+          "out": "Color",
+          "to": "ColorRamp",
+          "in": "Fac"
+        },
+        {
+          "from": "ColorRamp",
+          "out": "Color",
+          "to": "Mix Shader",
+          "in": "Fac"
+        }
+      ]
+    },
+    {
+      "id": "b_checker_texture",
+      "name": "Checker Texture",
+      "description": "프로시저럴 체커보드 패턴. UV 왜곡·타일링 확인용으로 가장 많이 쓰임",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "UV 전개 후 왜곡 확인 (임시 연결 후 최종 텍스처로 교체). 체커 바닥 패턴",
+      "node_graph": [
+        {
+          "from": "Texture Coordinate",
+          "out": "UV",
+          "to": "Checker Texture",
+          "in": "Vector"
+        },
+        {
+          "from": "Checker Texture",
+          "out": "Color",
+          "to": "Principled BSDF",
+          "in": "Base Color"
+        },
+        {
+          "from": "Principled BSDF",
+          "out": "BSDF",
+          "to": "Material Output",
+          "in": "Surface"
+        }
+      ]
+    },
+    {
+      "id": "b_brick_texture",
+      "name": "Brick Texture",
+      "description": "프로시저럴 벽돌·타일 패턴. Color1·Color2·Mortar로 벽돌·줄눈 색상. Offset으로 엇갈림 조절",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "건축 시각화 벽면·바닥 UV 없이 빠른 적용. 벽돌 변위 효과 (Displacement 연결)",
+      "node_graph": [
+        {
+          "from": "Texture Coordinate",
+          "out": "Generated",
+          "to": "Brick Texture",
+          "in": "Vector"
+        },
+        {
+          "from": "Brick Texture",
+          "out": "Color",
+          "to": "Principled BSDF",
+          "in": "Base Color"
+        },
+        {
+          "from": "Brick Texture",
+          "out": "Fac",
+          "to": "Displacement",
+          "in": "Height"
+        }
+      ]
+    },
+    {
+      "id": "b_white_noise",
+      "name": "White Noise Texture",
+      "description": "완전 랜덤 픽셀 노이즈. 패턴 없는 순수 난수. Fac 출력으로 흑백 랜덤값",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "그레인·필름 노이즈 효과. Roughness에 약하게 섞어 균일함 깨기. 스파클 반짝임 효과",
+      "node_graph": [
+        {
+          "from": "Texture Coordinate",
+          "out": "UV",
+          "to": "White Noise Texture",
+          "in": "Vector"
+        },
+        {
+          "from": "White Noise Texture",
+          "out": "Fac",
+          "to": "Math (Multiply 0.05)",
+          "in": "Value"
+        },
+        {
+          "from": "Math (Multiply 0.05)",
+          "out": "Value",
+          "to": "Mix Color",
+          "in": "Fac"
+        },
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Mix Color",
+          "in": "A"
+        },
+        {
+          "from": "Mix Color",
+          "out": "Result",
+          "to": "Principled BSDF",
+          "in": "Roughness"
+        }
+      ]
+    },
+    {
+      "id": "b_glass_bsdf",
+      "name": "Glass BSDF",
+      "description": "유리 전용 셰이더. 굴절(IOR)과 반사 통합. Roughness로 흐린 유리 표현. Cycles 필수",
+      "category": "Texture Nodes",
+      "badge": "material",
+      "mac": "",
+      "win": "",
+      "use_case": "유리컵·창문·보석·물방울. Principled BSDF Transmission보다 단순. IOR: 유리=1.5, 물=1.33",
+      "node_graph": [
+        {
+          "from": "Glass BSDF",
+          "out": "BSDF",
+          "to": "Material Output",
+          "in": "Surface"
+        }
+      ]
+    },
+    {
+      "id": "b_sss_shader",
+      "name": "Subsurface Scattering",
+      "description": "빛이 표면 내부로 투과하며 산란하는 효과. Radius(RGB)로 색상별 산란 거리 조절",
+      "category": "Texture Nodes",
+      "badge": "material",
+      "mac": "",
+      "win": "",
+      "use_case": "피부(붉은 기 산란), 왁스 초, 대리석, 옥(비취). Principled BSDF의 Subsurface 파라미터로 간편하게 사용 가능",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Subsurface Scattering",
+          "in": "Color"
+        },
+        {
+          "from": "Subsurface Scattering",
+          "out": "BSDF",
+          "to": "Mix Shader",
+          "in": "Shader 2"
+        },
+        {
+          "from": "Principled BSDF",
+          "out": "BSDF",
+          "to": "Mix Shader",
+          "in": "Shader 1"
+        },
+        {
+          "from": "Mix Shader",
+          "out": "Shader",
+          "to": "Material Output",
+          "in": "Surface"
+        }
+      ]
+    },
+    {
+      "id": "b_transparent_bsdf",
+      "name": "Transparent BSDF",
+      "description": "알파 컷아웃용 투명 셰이더. 굴절 없는 순수 투명. 알파 이미지와 조합",
+      "category": "Texture Nodes",
+      "badge": "material",
+      "mac": "",
+      "win": "",
+      "use_case": "잎사귀·망사·로고 컷아웃. Image Texture Alpha→Mix Shader Fac→(Transparent+재질) 패턴이 표준",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Alpha",
+          "to": "Mix Shader",
+          "in": "Fac"
+        },
+        {
+          "from": "Transparent BSDF",
+          "out": "BSDF",
+          "to": "Mix Shader",
+          "in": "Shader 1"
+        },
+        {
+          "from": "Principled BSDF",
+          "out": "BSDF",
+          "to": "Mix Shader",
+          "in": "Shader 2"
+        },
+        {
+          "from": "Mix Shader",
+          "out": "Shader",
+          "to": "Material Output",
+          "in": "Surface"
+        }
+      ]
+    },
+    {
+      "id": "b_translucent_bsdf",
+      "name": "Translucent BSDF",
+      "description": "얇은 오브젝트의 역광 투과광 표현. 두께 없이 빛이 뒤에서 비칠 때 밝아짐",
+      "category": "Texture Nodes",
+      "badge": "material",
+      "mac": "",
+      "win": "",
+      "use_case": "얇은 천·잎사귀·꽃잎의 역광 투과. Mix Shader로 Diffuse와 블렌딩해 강도 조절",
+      "node_graph": [
+        {
+          "from": "Diffuse BSDF",
+          "out": "BSDF",
+          "to": "Mix Shader",
+          "in": "Shader 1"
+        },
+        {
+          "from": "Translucent BSDF",
+          "out": "BSDF",
+          "to": "Mix Shader",
+          "in": "Shader 2"
+        },
+        {
+          "from": "Mix Shader",
+          "out": "Shader",
+          "to": "Material Output",
+          "in": "Surface"
+        }
+      ]
+    },
+    {
+      "id": "b_add_shader",
+      "name": "Add Shader",
+      "description": "두 셰이더를 더함. Factor 없이 완전 합산. 발광 레이어를 기존 재질에 추가할 때",
+      "category": "Texture Nodes",
+      "badge": "material",
+      "mac": "",
+      "win": "",
+      "use_case": "금속 재질 위에 발광 패턴 추가. 네온사인·LED·화면 픽셀 발광. Mix Shader보다 단순하게 겹치기",
+      "node_graph": [
+        {
+          "from": "Principled BSDF",
+          "out": "BSDF",
+          "to": "Add Shader",
+          "in": "Shader 1"
+        },
+        {
+          "from": "Emission Shader",
+          "out": "Emission",
+          "to": "Add Shader",
+          "in": "Shader 2"
+        },
+        {
+          "from": "Add Shader",
+          "out": "Shader",
+          "to": "Material Output",
+          "in": "Surface"
+        }
+      ]
+    },
+    {
+      "id": "b_shader_to_rgb",
+      "name": "Shader to RGB",
+      "description": "셰이더 출력을 색상 데이터로 변환. EEVEE 전용. Cycles에서 작동 안 함",
+      "category": "Texture Nodes",
+      "badge": "material",
+      "mac": "",
+      "win": "",
+      "use_case": "셀쉐이딩·만화 스타일 렌더. ColorRamp로 명암을 계단식으로 만들어 애니메이션 느낌 구현",
+      "node_graph": [
+        {
+          "from": "Principled BSDF",
+          "out": "BSDF",
+          "to": "Shader to RGB",
+          "in": "Shader"
+        },
+        {
+          "from": "Shader to RGB",
+          "out": "Color",
+          "to": "ColorRamp",
+          "in": "Fac"
+        },
+        {
+          "from": "ColorRamp",
+          "out": "Color",
+          "to": "Emission Shader",
+          "in": "Color"
+        },
+        {
+          "from": "Emission Shader",
+          "out": "Emission",
+          "to": "Material Output",
+          "in": "Surface"
+        }
+      ]
+    },
+    {
+      "id": "b_environment_texture",
+      "name": "Environment Texture (HDRI)",
+      "description": "HDR 이미지를 배경·조명으로 사용. World 셰이더에서만 사용. .hdr/.exr 파일 연결",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "실내외 사실적인 자연광 조명. 반사 환경 제공. Mapping 노드 Rotation Z로 수평 회전 제어",
+      "node_graph": [
+        {
+          "from": "Texture Coordinate",
+          "out": "Generated",
+          "to": "Mapping",
+          "in": "Vector"
+        },
+        {
+          "from": "Mapping",
+          "out": "Vector",
+          "to": "Environment Texture",
+          "in": "Vector"
+        },
+        {
+          "from": "Environment Texture",
+          "out": "Color",
+          "to": "Background",
+          "in": "Color"
+        },
+        {
+          "from": "Background",
+          "out": "Background",
+          "to": "World Output",
+          "in": "Surface"
+        }
+      ]
+    },
+    {
+      "id": "b_hdri_split",
+      "name": "HDRI — 배경/조명 분리",
+      "description": "카메라에는 단색 배경, 반사·조명에는 HDRI 유지. Light Path 노드로 레이 타입 분기",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "use_case": "제품 촬영 스타일. 깔끔한 흰 배경 + 자연스러운 HDRI 조명 동시 구현. 합성 작업 배경 분리",
+      "node_graph": [
+        {
+          "from": "Light Path",
+          "out": "Is Camera Ray",
+          "to": "Mix Shader",
+          "in": "Fac"
+        },
+        {
+          "from": "Background (White)",
+          "out": "Background",
+          "to": "Mix Shader",
+          "in": "Shader 1"
+        },
+        {
+          "from": "Background (HDRI)",
+          "out": "Background",
+          "to": "Mix Shader",
+          "in": "Shader 2"
+        },
+        {
+          "from": "Mix Shader",
+          "out": "Shader",
+          "to": "World Output",
+          "in": "Surface"
+        }
+      ]
+    },
+    {
+      "id": "comp_use_nodes",
+      "name": "Use Nodes 활성화",
+      "description": "Compositing 워크스페이스 → 상단 'Use Nodes' 체크. 활성화 전까지 컴포지터가 렌더에 영향 없음. Render Layers + Composite 두 노드가 기본으로 생성됨",
+      "category": "Compositing",
+      "badge": "shortcut",
+      "mac": "Compositor > Use Nodes ✓",
+      "win": "Compositor > Use Nodes ✓",
+      "use_case": "블렌더 컴포지팅을 시작하는 첫 단계. 없으면 아무 노드도 작동 안 함",
+      "node_graph": [
+        {
+          "from": "Render Layers",
+          "out": "Image",
+          "to": "Composite",
+          "in": "Image"
+        },
+        {
+          "from": "Render Layers",
+          "out": "Image",
+          "to": "Viewer",
+          "in": "Image"
+        }
+      ]
+    },
+    {
+      "id": "comp_basic",
+      "name": "기본 컴포지팅 세팅",
+      "description": "Render Layers → Composite. Viewer를 중간에 끼워 미리보기. Ctrl+Shift+LMB로 어떤 노드든 Viewer에 즉시 연결 가능",
+      "category": "Compositing",
+      "badge": "shortcut",
+      "mac": "Ctrl + Shift + LMB (Viewer 연결)",
+      "win": "Ctrl + Shift + LMB",
+      "use_case": "모든 컴포지팅의 기본 출발점. 이 흐름 위에 보정 노드를 추가하는 방식",
+      "node_graph": [
+        {
+          "from": "Render Layers",
+          "out": "Image",
+          "to": "Viewer",
+          "in": "Image"
+        },
+        {
+          "from": "Render Layers",
+          "out": "Image",
+          "to": "Composite",
+          "in": "Image"
+        }
+      ]
+    },
+    {
+      "id": "comp_denoise",
+      "name": "Denoise 세팅",
+      "description": "Render Layers의 Noisy Image + Denoising Normal + Denoising Albedo를 Denoise 노드에 연결. 샘플 수 낮아도 깔끔한 결과",
+      "category": "Compositing",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "use_case": "렌더 시간 단축 + 품질 유지. Cycles 샘플 64~128로 낮춰도 깔끔하게. 반드시 Render Properties에서 Denoising Data 패스 활성화 필요",
+      "node_graph": [
+        {
+          "from": "Render Layers",
+          "out": "Noisy Image",
+          "to": "Denoise",
+          "in": "Image"
+        },
+        {
+          "from": "Render Layers",
+          "out": "Denoising Normal",
+          "to": "Denoise",
+          "in": "Normal"
+        },
+        {
+          "from": "Render Layers",
+          "out": "Denoising Albedo",
+          "to": "Denoise",
+          "in": "Albedo"
+        },
+        {
+          "from": "Denoise",
+          "out": "Image",
+          "to": "Composite",
+          "in": "Image"
+        }
+      ]
+    },
+    {
+      "id": "comp_glare",
+      "name": "Glare (글로우/플레어)",
+      "description": "밝은 영역에 글로우·스트릭·고스트 추가. Threshold로 발광 기준 밝기 설정. Fog Glow가 가장 자연스러운 소프트 글로우",
+      "category": "Compositing",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "use_case": "조명·반사 하이라이트에 발광감 추가. 네온·LED·태양 플레어 효과. Streaks로 렌즈 반사선",
+      "node_graph": [
+        {
+          "from": "Render Layers",
+          "out": "Image",
+          "to": "Glare",
+          "in": "Image"
+        },
+        {
+          "from": "Glare",
+          "out": "Image",
+          "to": "Composite",
+          "in": "Image"
+        }
+      ]
+    },
+    {
+      "id": "comp_color_grade",
+      "name": "색보정 세팅 (Color Balance)",
+      "description": "Lift(어두운 영역)·Gamma(중간)·Gain(밝은 영역) 3단계 색보정. 영화 DI 워크플로우 표준 방식",
+      "category": "Compositing",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "use_case": "렌더 후 전체 분위기 색보정. 따뜻한/차가운 톤 조정. 밝은 영역과 어두운 영역 색상을 다르게",
+      "node_graph": [
+        {
+          "from": "Render Layers",
+          "out": "Image",
+          "to": "Color Balance",
+          "in": "Image"
+        },
+        {
+          "from": "Color Balance",
+          "out": "Image",
+          "to": "Composite",
+          "in": "Image"
+        }
+      ]
+    },
+    {
+      "id": "comp_vignette",
+      "name": "비네팅 세팅",
+      "description": "Ellipse Mask → Blur → Invert → Mix(Darken)로 테두리 어둡게. 카메라 렌즈 효과",
+      "category": "Compositing",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "use_case": "사진·영화 감성의 주변부 어두움 효과. 피사체를 중앙으로 시선 유도",
+      "node_graph": [
+        {
+          "from": "Ellipse Mask",
+          "out": "Mask",
+          "to": "Blur",
+          "in": "Image"
+        },
+        {
+          "from": "Blur",
+          "out": "Image",
+          "to": "Invert",
+          "in": "Color"
+        },
+        {
+          "from": "Render Layers",
+          "out": "Image",
+          "to": "Mix (Multiply)",
+          "in": "Image"
+        },
+        {
+          "from": "Invert",
+          "out": "Color",
+          "to": "Mix (Multiply)",
+          "in": "Image (2)"
+        },
+        {
+          "from": "Mix (Multiply)",
+          "out": "Image",
+          "to": "Composite",
+          "in": "Image"
+        }
+      ]
+    },
+    {
+      "id": "comp_dof",
+      "name": "아웃포커스 세팅 (Defocus)",
+      "description": "Z Depth 패스를 Defocus 노드에 연결해 거리 기반 블러. 카메라 오브젝트의 DOF보다 컴포지팅에서 후처리하면 렌더 후 강도 조절 가능",
+      "category": "Compositing",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "use_case": "렌더 후 아웃포커스 강도 자유롭게 조절. Render Properties에서 Z 패스 활성화 필요",
+      "node_graph": [
+        {
+          "from": "Render Layers",
+          "out": "Image",
+          "to": "Defocus",
+          "in": "Image"
+        },
+        {
+          "from": "Render Layers",
+          "out": "Depth",
+          "to": "Defocus",
+          "in": "Z"
+        },
+        {
+          "from": "Defocus",
+          "out": "Image",
+          "to": "Composite",
+          "in": "Image"
+        }
+      ]
+    },
+    {
+      "id": "comp_cryptomatte",
+      "name": "Cryptomatte 마스크 추출",
+      "description": "오브젝트·머티리얼 이름 기반 마스크 자동 생성. 로토스코프 없이 특정 오브젝트만 분리. Render Properties에서 Cryptomatte 패스 활성화 필요",
+      "category": "Compositing",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "use_case": "특정 오브젝트만 색보정·블러·효과 적용. After Effects 합성용 마스크 추출. 복잡한 씬에서 특정 재질만 분리",
+      "node_graph": [
+        {
+          "from": "Render Layers",
+          "out": "Image",
+          "to": "Cryptomatte",
+          "in": "Image"
+        },
+        {
+          "from": "Render Layers",
+          "out": "CryptoObject",
+          "to": "Cryptomatte",
+          "in": "Crypto"
+        },
+        {
+          "from": "Cryptomatte",
+          "out": "Matte",
+          "to": "Mix (Color Grade)",
+          "in": "Fac"
+        },
+        {
+          "from": "Cryptomatte",
+          "out": "Image",
+          "to": "Composite",
+          "in": "Image"
+        }
+      ]
+    },
+    {
+      "id": "comp_multipass",
+      "name": "멀티패스 합성 세팅",
+      "description": "Diffuse·Glossy·Shadow·AO·Emit 패스를 Add/Mix로 합산. 각 패스 개별 조정 후 합치는 워크플로우",
+      "category": "Compositing",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "use_case": "렌더 후 그림자만 밝게, 반사만 강도 조정. Render Properties에서 각 패스 활성화 필요. EXR 멀티레이어로 저장 권장",
+      "node_graph": [
+        {
+          "from": "Render Layers",
+          "out": "DiffDir",
+          "to": "Mix (Add)",
+          "in": "Image"
+        },
+        {
+          "from": "Render Layers",
+          "out": "GlossDir",
+          "to": "Mix (Add)",
+          "in": "Image (2)"
+        },
+        {
+          "from": "Mix (Add)",
+          "out": "Image",
+          "to": "Mix (Add 2)",
+          "in": "Image"
+        },
+        {
+          "from": "Render Layers",
+          "out": "Shadow",
+          "to": "Mix (Add 2)",
+          "in": "Image (2)"
+        },
+        {
+          "from": "Mix (Add 2)",
+          "out": "Image",
+          "to": "Composite",
+          "in": "Image"
+        }
+      ]
+    },
+    {
+      "id": "comp_alpha_over",
+      "name": "Alpha Over — CG 합성",
+      "description": "CG 렌더를 실사 배경 위에 알파로 합성. 상단 레이어가 아래를 덮는 방식",
+      "category": "Compositing",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "use_case": "그린스크린 합성, 실사 배경 위 3D 오브젝트 올리기. Shadow Catcher 오브젝트와 함께 사용",
+      "node_graph": [
+        {
+          "from": "Image (Background)",
+          "out": "Image",
+          "to": "Alpha Over",
+          "in": "Image (1)"
+        },
+        {
+          "from": "Render Layers",
+          "out": "Image",
+          "to": "Alpha Over",
+          "in": "Image (2)"
+        },
+        {
+          "from": "Alpha Over",
+          "out": "Image",
+          "to": "Composite",
+          "in": "Image"
+        }
+      ]
+    },
+    {
+      "id": "comp_lens_effects",
+      "name": "렌즈 효과 세팅",
+      "description": "Glare(플레어) + Lens Distortion(배럴 왜곡) + Chromatic Aberration 조합으로 카메라 렌즈 느낌",
+      "category": "Compositing",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "use_case": "CG의 너무 완벽한 느낌을 제거. 실사 카메라 매칭. 시네마틱 감성",
+      "node_graph": [
+        {
+          "from": "Render Layers",
+          "out": "Image",
+          "to": "Lens Distortion",
+          "in": "Image"
+        },
+        {
+          "from": "Lens Distortion",
+          "out": "Image",
+          "to": "Glare",
+          "in": "Image"
+        },
+        {
+          "from": "Glare",
+          "out": "Image",
+          "to": "Composite",
+          "in": "Image"
+        }
+      ]
+    },
+    {
+      "id": "comp_file_output",
+      "name": "File Output — 패스 저장",
+      "description": "렌더 패스를 EXR·PNG 파일로 자동 저장. 패스별 별도 파일 생성 가능. 경로와 파일명 설정 필수",
+      "category": "Compositing",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "use_case": "멀티패스 EXR 저장. AE·Nuke 합성용 패스 파일 자동 출력. 배치 렌더 자동화",
+      "node_graph": [
+        {
+          "from": "Render Layers",
+          "out": "Image",
+          "to": "File Output",
+          "in": "Image"
+        },
+        {
+          "from": "Render Layers",
+          "out": "Depth",
+          "to": "File Output",
+          "in": "Depth"
+        },
+        {
+          "from": "Render Layers",
+          "out": "Image",
+          "to": "Composite",
+          "in": "Image"
+        }
+      ]
+    }
+  ]
+}

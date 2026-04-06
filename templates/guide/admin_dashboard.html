@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — Guide</title>
+  <link rel="stylesheet" href="/static/guide/guide.css">
+</head>
+<body>
+
+<div class="admin-wrap">
+
+  <div class="admin-topbar">
+    <h1>Guide Admin</h1>
+    <a href="/guide/admin/logout" class="btn-logout">로그아웃</a>
+  </div>
+
+  <!-- Tool Tabs -->
+  {% set active_tool = request.args.get('tool', tools[0]) %}
+  <div class="admin-tool-tabs">
+    {% for tool_id in tools %}
+    <a href="?tool={{ tool_id }}" class="admin-tool-tab {% if active_tool == tool_id %}active{% endif %}">
+      {{ tool_names[tool_id] }}
+    </a>
+    {% endfor %}
+  </div>
+
+  {% set td = tools_data[active_tool] %}
+  {% set items = td.get('items', []) %}
+
+  <div class="admin-card">
+    <div class="admin-card-header">
+      <h2>{{ tool_names[active_tool] }} — {{ items|length }} items</h2>
+      <button class="btn-add" onclick="openAddModal()">+ 아이템 추가</button>
+    </div>
+
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Category</th>
+          <th>Badge</th>
+          <th>Mac</th>
+          <th>Win</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+        <tr>
+          <td><strong>{{ item.name }}</strong></td>
+          <td style="max-width:220px;color:#6e6e73;font-size:12px;">{{ item.description }}</td>
+          <td>{{ item.category }}</td>
+          <td>{{ item.badge }}</td>
+          <td><code style="font-size:11px;">{{ item.mac or '—' }}</code></td>
+          <td><code style="font-size:11px;">{{ item.win or '—' }}</code></td>
+          <td style="white-space:nowrap;">
+            <button class="btn-edit" onclick="openEditModal({{ item | tojson }})">편집</button>
+            <form method="POST" action="/guide/admin/item/delete" style="display:inline;" onsubmit="return confirm('삭제할까요?')">
+              <input type="hidden" name="tool_id" value="{{ active_tool }}">
+              <input type="hidden" name="item_id" value="{{ item.id }}">
+              <button type="submit" class="btn-del">삭제</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="7" style="text-align:center;color:#8e8e93;padding:32px;">아이템 없음</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Back to Guide -->
+  <a href="/guide" style="font-size:13px;color:#0071e3;text-decoration:none;">← 가이드로 돌아가기</a>
+
+</div>
+
+<!-- ===== ADD MODAL ===== -->
+<div class="modal-overlay" id="addModal">
+  <div class="modal-box">
+    <h3>아이템 추가</h3>
+    <form method="POST" action="/guide/admin/item/add">
+      <input type="hidden" name="tool_id" value="{{ active_tool }}">
+      <div class="form-group">
+        <label>ID (영문, 소문자, 언더스코어)</label>
+        <input type="text" name="id" placeholder="make_editable" required>
+      </div>
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="name" placeholder="Make Editable" required>
+      </div>
+      <div class="form-group">
+        <label>Description (한국어 설명)</label>
+        <textarea name="description" placeholder="프리미티브를 폴리곤으로 변환"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <input type="text" name="category" placeholder="Modeling">
+      </div>
+      <div class="form-group">
+        <label>Badge</label>
+        <select name="badge">
+          <option value="shortcut">shortcut</option>
+          <option value="material">material</option>
+          <option value="texture">texture</option>
+          <option value="procedural">procedural</option>
+          <option value="utility">utility</option>
+          <option value="modifier">modifier</option>
+          <option value="MoGraph">MoGraph</option>
+          <option value="Generator">Generator</option>
+          <option value="Edit Mode">Edit Mode</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Mac Shortcut</label>
+        <input type="text" name="mac" placeholder="Cmd + R">
+      </div>
+      <div class="form-group">
+        <label>Win Shortcut</label>
+        <input type="text" name="win" placeholder="Ctrl + R">
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-cancel" onclick="closeModal('addModal')">취소</button>
+        <button type="submit" class="btn-save">추가</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ===== EDIT MODAL ===== -->
+<div class="modal-overlay" id="editModal">
+  <div class="modal-box">
+    <h3>아이템 편집</h3>
+    <form method="POST" action="/guide/admin/item/edit">
+      <input type="hidden" name="tool_id" value="{{ active_tool }}">
+      <input type="hidden" name="item_id" id="editItemId">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="name" id="editName" required>
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea name="description" id="editDescription"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <input type="text" name="category" id="editCategory">
+      </div>
+      <div class="form-group">
+        <label>Badge</label>
+        <select name="badge" id="editBadge">
+          <option value="shortcut">shortcut</option>
+          <option value="material">material</option>
+          <option value="texture">texture</option>
+          <option value="procedural">procedural</option>
+          <option value="utility">utility</option>
+          <option value="modifier">modifier</option>
+          <option value="MoGraph">MoGraph</option>
+          <option value="Generator">Generator</option>
+          <option value="Edit Mode">Edit Mode</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Mac Shortcut</label>
+        <input type="text" name="mac" id="editMac">
+      </div>
+      <div class="form-group">
+        <label>Win Shortcut</label>
+        <input type="text" name="win" id="editWin">
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-cancel" onclick="closeModal('editModal')">취소</button>
+        <button type="submit" class="btn-save">저장</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+function openAddModal() {
+  document.getElementById('addModal').classList.add('open');
+}
+
+function openEditModal(item) {
+  document.getElementById('editItemId').value = item.id || '';
+  document.getElementById('editName').value = item.name || '';
+  document.getElementById('editDescription').value = item.description || '';
+  document.getElementById('editCategory').value = item.category || '';
+  document.getElementById('editMac').value = item.mac || '';
+  document.getElementById('editWin').value = item.win || '';
+
+  const badgeSel = document.getElementById('editBadge');
+  const badgeVal = item.badge || 'shortcut';
+  for (let opt of badgeSel.options) {
+    opt.selected = (opt.value === badgeVal);
+  }
+
+  document.getElementById('editModal').classList.add('open');
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+}
+
+// Close on overlay click
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('open');
+  });
+});
+</script>
+
+</body>
+</html>

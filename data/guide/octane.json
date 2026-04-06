@@ -1,0 +1,1668 @@
+{
+  "tool": "octane",
+  "name": "Octane Render",
+  "items": [
+    {
+      "id": "oct_universal",
+      "name": "Universal Material",
+      "description": "Diffuse·Metallic·Specular를 통합한 올인원 PBR 재질. 대부분의 실무 재질은 이걸로 해결",
+      "category": "Materials",
+      "badge": "material",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "ImageTexture",
+        "FloatImageTexture",
+        "NormalMap",
+        "Displacement",
+        "BlackBodyEmission"
+      ],
+      "use_case": "금속, 플라스틱, 도장 표면 등 거의 모든 불투명 재질에 사용",
+      "example": "ImageTexture → Albedo\nFloatImageTexture → Roughness\nFloatImageTexture → Metallic\nImageTexture → Normal\nDisplacement → Displacement 채널",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Universal Material",
+          "in": "Albedo"
+        },
+        {
+          "from": "Float Image Texture",
+          "out": "Value",
+          "to": "Universal Material",
+          "in": "Roughness"
+        },
+        {
+          "from": "Float Image Texture",
+          "out": "Value",
+          "to": "Universal Material",
+          "in": "Metallic"
+        },
+        {
+          "from": "Normal Map",
+          "out": "Normal",
+          "to": "Universal Material",
+          "in": "Normal"
+        },
+        {
+          "from": "Displacement",
+          "out": "Out",
+          "to": "Universal Material",
+          "in": "Displacement"
+        }
+      ]
+    },
+    {
+      "id": "oct_glossy",
+      "name": "Glossy Material",
+      "description": "반사가 있는 광택 재질. Roughness 0=거울, 1=무광. 금속·플라스틱에 적합",
+      "category": "Materials",
+      "badge": "material",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "ImageTexture",
+        "FloatImageTexture",
+        "NormalMap"
+      ],
+      "use_case": "반사가 뚜렷한 도장 금속, 유광 플라스틱, 세라믹 표면",
+      "example": "RGB Spectrum → Diffuse (색상)\nFloatImageTexture → Roughness (거칠기 맵)\nImageTexture → Normal (노멀 맵)",
+      "node_graph": [
+        {
+          "from": "RGB Spectrum",
+          "out": "Color",
+          "to": "Glossy Material",
+          "in": "Diffuse"
+        },
+        {
+          "from": "Float Image Texture",
+          "out": "Value",
+          "to": "Glossy Material",
+          "in": "Roughness"
+        },
+        {
+          "from": "Normal Map",
+          "out": "Normal",
+          "to": "Glossy Material",
+          "in": "Normal Map"
+        }
+      ]
+    },
+    {
+      "id": "oct_diffuse",
+      "name": "Diffuse Material",
+      "description": "반사 없는 순수 확산 재질. 렌더가 빠르고 무광 표면 표현에 최적",
+      "category": "Materials",
+      "badge": "material",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "ImageTexture",
+        "NormalMap",
+        "DirtTexture"
+      ],
+      "use_case": "석고, 분필, 콘크리트처럼 반사가 전혀 없는 완전 무광 재질. Shadow Catcher 용도로도 사용",
+      "example": "ImageTexture → Diffuse (알베도)\nDirtTexture → Roughness (AO 느낌 추가)\nImageTexture → Normal",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Diffuse Material",
+          "in": "Diffuse"
+        },
+        {
+          "from": "Normal Map",
+          "out": "Normal",
+          "to": "Diffuse Material",
+          "in": "Normal Map"
+        },
+        {
+          "from": "Dirt Texture",
+          "out": "Value",
+          "to": "Diffuse Material",
+          "in": "Roughness"
+        }
+      ]
+    },
+    {
+      "id": "oct_specular",
+      "name": "Specular Material",
+      "description": "유리·물·보석 전용 투과 재질. IOR(굴절률)로 유리 1.5, 물 1.33, 다이아몬드 2.42",
+      "category": "Materials",
+      "badge": "material",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "AbsorptionMedium",
+        "ScatteringMedium",
+        "RGB Spectrum"
+      ],
+      "use_case": "유리병, 물, 보석, 얼음처럼 빛이 투과하는 재질",
+      "example": "IOR → 1.5 (유리)\nRGB Spectrum → Transmission (투과 색상)\nAbsorptionMedium → Medium (색유리 표현)",
+      "node_graph": [
+        {
+          "from": "RGB Spectrum",
+          "out": "Color",
+          "to": "Specular Material",
+          "in": "Reflection"
+        },
+        {
+          "from": "RGB Spectrum",
+          "out": "Color",
+          "to": "Specular Material",
+          "in": "Transmission"
+        },
+        {
+          "from": "Absorption Medium",
+          "out": "Medium",
+          "to": "Specular Material",
+          "in": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "oct_mix_material",
+      "name": "Mix Material",
+      "description": "두 머티리얼을 Amount 값 또는 텍스처 마스크로 블렌딩",
+      "category": "Materials",
+      "badge": "material",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Material A",
+        "Material B",
+        "DirtTexture",
+        "NoiseTexture",
+        "FloatImageTexture"
+      ],
+      "use_case": "건조/젖은 콘크리트 혼합, 금속+녹, 깨끗한 표면+오염 영역 분리",
+      "example": "Glossy (깨끗한 금속) → Material 1\nDiffuse (녹슨 금속) → Material 2\nDirtTexture → Amount (홈/틈새에 녹 집중)",
+      "node_graph": [
+        {
+          "from": "Glossy Material",
+          "out": "Material",
+          "to": "Mix Material",
+          "in": "Material 1"
+        },
+        {
+          "from": "Diffuse Material",
+          "out": "Material",
+          "to": "Mix Material",
+          "in": "Material 2"
+        },
+        {
+          "from": "Dirt Texture",
+          "out": "Value",
+          "to": "Mix Material",
+          "in": "Amount"
+        }
+      ]
+    },
+    {
+      "id": "oct_composite_material",
+      "name": "Composite Material",
+      "description": "여러 재질을 레이어 방식으로 마스크 합성. 가장 복잡한 재질 표현 가능",
+      "category": "Materials",
+      "badge": "material",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Base Material",
+        "Layer Materials",
+        "FloatImageTexture",
+        "DirtTexture"
+      ],
+      "use_case": "베이스 금속 위에 오염·지문·레이블·페인트 벗겨짐을 레이어로 쌓을 때",
+      "example": "Base: Glossy (금속)\nLayer 1: Diffuse (오염) + DirtTexture 마스크\nLayer 2: Glossy (페인트 잔여물) + FloatImageTexture 마스크",
+      "node_graph": [
+        {
+          "from": "Glossy Material",
+          "out": "Material",
+          "to": "Composite Material",
+          "in": "Base Material"
+        },
+        {
+          "from": "Diffuse Material",
+          "out": "Material",
+          "to": "Composite Material",
+          "in": "Layer 1"
+        },
+        {
+          "from": "Float Image Texture",
+          "out": "Value",
+          "to": "Composite Material",
+          "in": "Mask 1"
+        }
+      ]
+    },
+    {
+      "id": "oct_toon",
+      "name": "Toon Material",
+      "description": "셀 쉐이딩 스타일 재질. 외곽선 두께·색상, 명암 단계 설정 가능",
+      "category": "Materials",
+      "badge": "material",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "RGB Spectrum",
+        "ImageTexture"
+      ],
+      "use_case": "애니메이션풍 렌더, 일러스트 느낌 제품 비주얼, 아웃라인이 필요한 캐릭터",
+      "example": "RGB Spectrum → Diffuse (기본 색상)\nRGB Spectrum → Edge Color (외곽선 색상)\nEdge Width → 1~3px",
+      "node_graph": [
+        {
+          "from": "RGB Spectrum",
+          "out": "Color",
+          "to": "Toon Material",
+          "in": "Diffuse"
+        },
+        {
+          "from": "RGB Spectrum",
+          "out": "Color",
+          "to": "Toon Material",
+          "in": "Outline Color"
+        }
+      ]
+    },
+    {
+      "id": "oct_hair",
+      "name": "Hair Material",
+      "description": "Octane 전용 헤어·털 재질. 멜라닌 기반 물리적 헤어 색상 시뮬레이션",
+      "category": "Materials",
+      "badge": "material",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "RGB Spectrum",
+        "FloatImageTexture"
+      ],
+      "use_case": "사람 헤어, 동물 털, 카펫·패브릭 파이버",
+      "example": "Melanin → 0.3 (갈색 헤어)\nMelanin Redness → 0.5 (적갈색 계열)\nRoughness Longitudinal → 0.1 (광택)\nRandomize Color → ON (가닥별 색상 변화)",
+      "node_graph": [
+        {
+          "from": "Float Image Texture",
+          "out": "Value",
+          "to": "Hair Material",
+          "in": "Roughness Long"
+        },
+        {
+          "from": "Float Image Texture",
+          "out": "Value",
+          "to": "Hair Material",
+          "in": "Roughness Trans"
+        }
+      ]
+    },
+    {
+      "id": "oct_shadow_catcher",
+      "name": "Shadow Catcher Material",
+      "description": "오브젝트는 보이지 않고 그림자·반사만 받아 실사 합성에 활용",
+      "category": "Materials",
+      "badge": "material",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Diffuse Material",
+        "Object Layer Tag"
+      ],
+      "use_case": "3D 오브젝트의 그림자를 실제 배경 영상/이미지 위에 합성할 때",
+      "example": "평면 오브젝트에 Diffuse Material 적용\nObject Layer Tag → Shadow Catcher ON\nEXR Shadow 패스로 AE에서 합성",
+      "node_graph": [
+        {
+          "from": "Diffuse Material",
+          "out": "Material",
+          "to": "Shadow Catcher Material",
+          "in": "Shadow Catcher"
+        },
+        {
+          "from": "Shadow Catcher Material",
+          "out": "Material",
+          "to": "Geometry",
+          "in": "Material"
+        }
+      ]
+    },
+    {
+      "id": "oct_image_texture",
+      "name": "Image Texture",
+      "description": "외부 이미지(PNG·JPG·EXR·TIFF)를 텍스처로 불러오는 핵심 노드",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Universal Material",
+        "Glossy Material",
+        "UVW Transform",
+        "TriPlanar"
+      ],
+      "use_case": "알베도·노멀·러프니스·AO 등 PBR 텍스처 맵을 불러올 때 모든 상황에 사용",
+      "example": "ImageTexture (sRGB, 알베도) → Albedo 채널\nImageTexture (Non-color, 러프니스) → Roughness 채널\nImageTexture (Non-color, 노멀) → Normal 채널\n※ 데이터 맵은 반드시 Gamma=1.0 설정",
+      "node_graph": [
+        {
+          "from": "UVW Transform",
+          "out": "UV",
+          "to": "Image Texture",
+          "in": "UV Transform"
+        },
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Universal Material",
+          "in": "Albedo"
+        }
+      ]
+    },
+    {
+      "id": "oct_float_texture",
+      "name": "Float Image Texture",
+      "description": "흑백(그레이스케일) 전용 이미지 텍스처. Roughness·Metallic·Displacement에 연결",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Universal Material",
+        "Displacement",
+        "Multiply"
+      ],
+      "use_case": "Roughness, Metallic, AO, Height, Opacity처럼 단일 채널 값이 필요한 모든 상황",
+      "example": "FloatImageTexture (Roughness.png) → Universal Material Roughness\nFloatImageTexture (Metallic.png) → Universal Material Metallic\nFloatImageTexture (AO.png) → Multiply → Albedo",
+      "node_graph": [
+        {
+          "from": "Float Image Texture",
+          "out": "Value",
+          "to": "Universal Material",
+          "in": "Roughness"
+        },
+        {
+          "from": "Float Image Texture",
+          "out": "Value",
+          "to": "Universal Material",
+          "in": "Metallic"
+        }
+      ]
+    },
+    {
+      "id": "oct_alpha_image",
+      "name": "Alpha Image Texture",
+      "description": "이미지의 알파 채널만 추출. PNG 알파 컷아웃 구현에 사용",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Universal Material",
+        "Mix Material"
+      ],
+      "use_case": "잎사귀, 격자, 데칼, 로고 등 알파 컷아웃이 필요한 재질",
+      "example": "PNG (알파 포함) → AlphaImageTexture\nAlphaImageTexture → Universal Material Opacity\n→ 알파 영역만 보이는 컷아웃 완성",
+      "node_graph": [
+        {
+          "from": "Alpha Image Texture",
+          "out": "Alpha",
+          "to": "Universal Material",
+          "in": "Opacity"
+        }
+      ]
+    },
+    {
+      "id": "oct_rgb_spectrum",
+      "name": "RGB Spectrum",
+      "description": "단색 색상값을 입력하는 기본 노드. ImageTexture 대신 단순 색상 지정 시 사용",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Universal Material",
+        "Mix Texture",
+        "Emission"
+      ],
+      "use_case": "단색 알베도, 발광 색상, 믹스 재질의 색상 입력",
+      "example": "RGB Spectrum (빨간색) → Universal Material Albedo\nRGB Spectrum (흰색, 고강도) → BlackBodyEmission Texture",
+      "node_graph": [
+        {
+          "from": "RGB Spectrum",
+          "out": "Color",
+          "to": "Universal Material",
+          "in": "Albedo"
+        },
+        {
+          "from": "RGB Spectrum",
+          "out": "Color",
+          "to": "BlackBody Emission",
+          "in": "Texture"
+        }
+      ]
+    },
+    {
+      "id": "oct_gaussian_spectrum",
+      "name": "Gaussian Spectrum",
+      "description": "빛 파장 기반 가우시안 색상. 형광·발광 소재의 스펙트럼 표현",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "BlackBodyEmission",
+        "TextureEmission"
+      ],
+      "use_case": "형광등, 레이저, 특정 파장의 빛을 물리적으로 정확하게 표현할 때",
+      "example": "GaussianSpectrum (파장: 520nm, 녹색 레이저) → TextureEmission\nTextureEmission → Universal Material Emission",
+      "node_graph": [
+        {
+          "from": "Gaussian Spectrum",
+          "out": "Color",
+          "to": "Texture Emission",
+          "in": "Texture"
+        },
+        {
+          "from": "Texture Emission",
+          "out": "Emission",
+          "to": "Universal Material",
+          "in": "Emission"
+        }
+      ]
+    },
+    {
+      "id": "oct_vertex_map",
+      "name": "Vertex Map Texture",
+      "description": "C4D Vertex Map 태그 데이터를 텍스처로 변환",
+      "category": "Texture Nodes",
+      "badge": "texture",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Universal Material",
+        "Mix Material",
+        "Displacement"
+      ],
+      "use_case": "Weight Painting 결과를 Octane 셰이더에 전달. 특정 영역만 다른 재질이나 변위 적용",
+      "example": "C4D Vertex Map 태그 페인팅\nVertexMapTexture → Mix Material Amount\n→ 페인팅 영역에만 다른 재질 적용",
+      "node_graph": [
+        {
+          "from": "Vertex Map Texture",
+          "out": "Value",
+          "to": "Mix Material",
+          "in": "Amount"
+        }
+      ]
+    },
+    {
+      "id": "oct_noise",
+      "name": "Noise Texture",
+      "description": "Perlin 노이즈 기반 프로시저럴 패턴. Octaves·Frequency·Turbulence로 제어",
+      "category": "Procedural",
+      "badge": "procedural",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Universal Material",
+        "Mix Texture",
+        "Displacement",
+        "Mix Material"
+      ],
+      "use_case": "자연스러운 러프니스 변화, 오염 패턴, 자연석 표면, 절차적 범프 생성",
+      "example": "NoiseTexture (Scale 5, Octaves 6) → Mix Material Amount\n→ 두 재질을 노이즈 패턴으로 자연스럽게 혼합\n\nNoiseTexture → Displacement\n→ 지형·거친 표면 변위 효과",
+      "node_graph": [
+        {
+          "from": "Noise Texture",
+          "out": "Value",
+          "to": "Universal Material",
+          "in": "Roughness"
+        },
+        {
+          "from": "Noise Texture",
+          "out": "Value",
+          "to": "Displacement",
+          "in": "Texture"
+        }
+      ]
+    },
+    {
+      "id": "oct_turbulence",
+      "name": "Turbulence Texture",
+      "description": "난류 기반 날카로운 노이즈. 대리석 결, 연기, 구름 패턴 베이스",
+      "category": "Procedural",
+      "badge": "procedural",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Mix Texture",
+        "Displacement",
+        "Universal Material"
+      ],
+      "use_case": "대리석·오닉스 재질의 결 패턴, 불꽃·연기 텍스처 베이스",
+      "example": "TurbulenceTexture → Gradient (흑백→대리석 색상 매핑)\nGradient → Universal Material Albedo\n→ 프로시저럴 대리석 완성",
+      "node_graph": [
+        {
+          "from": "Turbulence Texture",
+          "out": "Value",
+          "to": "Gradient",
+          "in": "Texture"
+        },
+        {
+          "from": "Gradient",
+          "out": "Color",
+          "to": "Universal Material",
+          "in": "Albedo"
+        }
+      ]
+    },
+    {
+      "id": "oct_marble",
+      "name": "Marble Texture",
+      "description": "대리석 패턴 전용 프로시저럴 노드",
+      "category": "Procedural",
+      "badge": "procedural",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Universal Material",
+        "Mix Texture",
+        "ColorCorrection"
+      ],
+      "use_case": "건축 시각화의 대리석 바닥·벽, 고급 인테리어 재질",
+      "example": "MarbleTexture → ColorCorrection (색상 조정)\nColorCorrection → Universal Material Albedo\nFloatImageTexture (Roughness) → Roughness",
+      "node_graph": [
+        {
+          "from": "Marble Texture",
+          "out": "Color",
+          "to": "Color Correction",
+          "in": "Texture"
+        },
+        {
+          "from": "Color Correction",
+          "out": "Color",
+          "to": "Universal Material",
+          "in": "Albedo"
+        }
+      ]
+    },
+    {
+      "id": "oct_ridged_fractal",
+      "name": "Ridged Fractal Texture",
+      "description": "능선형 프랙탈 패턴. 암석 균열, 산맥, 금속 스크래치",
+      "category": "Procedural",
+      "badge": "procedural",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Displacement",
+        "Universal Material",
+        "Mix Texture"
+      ],
+      "use_case": "바위·돌의 균열 패턴, 거친 지형 변위, 금속 표면 스크래치",
+      "example": "RidgedFractalTexture → Displacement\n→ 암석 표면 변위 효과\n\nRidgedFractalTexture → Roughness\n→ 긁힌 금속 질감",
+      "node_graph": [
+        {
+          "from": "Ridged Fractal Texture",
+          "out": "Value",
+          "to": "Displacement",
+          "in": "Texture"
+        },
+        {
+          "from": "Displacement",
+          "out": "Out",
+          "to": "Universal Material",
+          "in": "Displacement"
+        }
+      ]
+    },
+    {
+      "id": "oct_checks",
+      "name": "Checks Texture",
+      "description": "프로시저럴 체커보드 패턴",
+      "category": "Procedural",
+      "badge": "procedural",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Universal Material",
+        "UVW Transform"
+      ],
+      "use_case": "UV 매핑 확인용 체커 패턴, 단순 타일 패턴, 플로어 바닥재",
+      "example": "ChecksTexture → UVW Transform (타일 수 조절)\nUVW Transform → Universal Material Albedo\n→ UV 왜곡 여부 확인",
+      "node_graph": [
+        {
+          "from": "UVW Transform",
+          "out": "UV",
+          "to": "Checks Texture",
+          "in": "UV Transform"
+        },
+        {
+          "from": "Checks Texture",
+          "out": "Color",
+          "to": "Universal Material",
+          "in": "Albedo"
+        }
+      ]
+    },
+    {
+      "id": "oct_saw_wave",
+      "name": "Saw Wave Texture",
+      "description": "톱니파 기반 반복 그라데이션. 날카로운 선형 반복 패턴",
+      "category": "Procedural",
+      "badge": "procedural",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Mix Texture",
+        "Universal Material",
+        "ColorCorrection"
+      ],
+      "use_case": "줄무늬 패턴, 반복 색상 밴드, 그라데이션 타일링",
+      "example": "SawWaveTexture (Scale 10) → ColorCorrection\nColorCorrection → Universal Material Albedo",
+      "node_graph": [
+        {
+          "from": "Saw Wave Texture",
+          "out": "Value",
+          "to": "Color Correction",
+          "in": "Texture"
+        },
+        {
+          "from": "Color Correction",
+          "out": "Color",
+          "to": "Universal Material",
+          "in": "Albedo"
+        }
+      ]
+    },
+    {
+      "id": "oct_sine_wave",
+      "name": "Sine Wave Texture",
+      "description": "사인파 기반 부드러운 반복 패턴",
+      "category": "Procedural",
+      "badge": "procedural",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Mix Texture",
+        "Displacement",
+        "Universal Material"
+      ],
+      "use_case": "물결 무늬, 부드러운 줄무늬, 파형 변위",
+      "example": "SineWaveTexture → Displacement\n→ 천·패브릭의 부드러운 주름 변위\n\nSineWaveTexture → Roughness\n→ 주기적 거칠기 변화",
+      "node_graph": [
+        {
+          "from": "Sine Wave Texture",
+          "out": "Value",
+          "to": "Displacement",
+          "in": "Texture"
+        },
+        {
+          "from": "Displacement",
+          "out": "Out",
+          "to": "Universal Material",
+          "in": "Displacement"
+        }
+      ]
+    },
+    {
+      "id": "oct_mix_texture",
+      "name": "Mix Texture",
+      "description": "두 텍스처를 Amount(0~1) 또는 마스크 텍스처로 선형 보간 블렌딩",
+      "category": "Blend & Math",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "ImageTexture",
+        "NoiseTexture",
+        "DirtTexture",
+        "FloatImageTexture"
+      ],
+      "use_case": "텍스처 레벨에서 두 맵을 혼합. 재질 교체 없이 마스크로 영역별 다른 질감 구현",
+      "example": "ImageTexture (깨끗) → Texture 1\nImageTexture (오염) → Texture 2\nDirtTexture → Amount\n→ 홈/틈새에만 오염된 텍스처 표시",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Mix Texture",
+          "in": "Texture 1"
+        },
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Mix Texture",
+          "in": "Texture 2"
+        },
+        {
+          "from": "Dirt Texture",
+          "out": "Value",
+          "to": "Mix Texture",
+          "in": "Amount"
+        },
+        {
+          "from": "Mix Texture",
+          "out": "Color",
+          "to": "Universal Material",
+          "in": "Albedo"
+        }
+      ]
+    },
+    {
+      "id": "oct_multiply",
+      "name": "Multiply Texture",
+      "description": "두 텍스처 값을 픽셀별로 곱함 (A × B). 결과는 항상 어둡거나 같음",
+      "category": "Blend & Math",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "FloatImageTexture",
+        "NoiseTexture",
+        "Universal Material"
+      ],
+      "use_case": "AO 맵을 알베도에 곱해 자연스러운 음영 추가, 러프니스 전체 강도 배수 조절",
+      "example": "FloatImageTexture (AO 맵) → A\nImageTexture (알베도) → B\nMultiply → Universal Material Albedo\n→ AO가 베이크된 알베도",
+      "node_graph": [
+        {
+          "from": "Float Image Texture",
+          "out": "Value",
+          "to": "Multiply",
+          "in": "Texture 1"
+        },
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Multiply",
+          "in": "Texture 2"
+        },
+        {
+          "from": "Multiply",
+          "out": "Result",
+          "to": "Universal Material",
+          "in": "Albedo"
+        }
+      ]
+    },
+    {
+      "id": "oct_add",
+      "name": "Add Texture",
+      "description": "두 텍스처 값을 더함. 발광 레이어 합성, 밝기 증가에 사용",
+      "category": "Blend & Math",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "TextureEmission",
+        "Universal Material",
+        "FloatImageTexture"
+      ],
+      "use_case": "발광 레이어를 기존 텍스처에 더하거나, 두 노이즈 패턴을 합산할 때",
+      "example": "ImageTexture (알베도) → A\nNoiseTexture (발광 패턴) → B\nAdd → Universal Material Emission\n→ 알베도 패턴 위에 발광 효과",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Add Texture",
+          "in": "Texture 1"
+        },
+        {
+          "from": "Noise Texture",
+          "out": "Value",
+          "to": "Add Texture",
+          "in": "Texture 2"
+        },
+        {
+          "from": "Add Texture",
+          "out": "Color",
+          "to": "Universal Material",
+          "in": "Emission"
+        }
+      ]
+    },
+    {
+      "id": "oct_subtract",
+      "name": "Subtract Texture",
+      "description": "텍스처 A에서 B를 빼는 차감 연산",
+      "category": "Blend & Math",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "FloatImageTexture",
+        "NoiseTexture"
+      ],
+      "use_case": "마스크에서 특정 영역 제거, 두 노이즈 패턴의 차이로 새로운 패턴 생성",
+      "example": "FloatImageTexture (전체 마스크) → A\nFloatImageTexture (제거할 영역) → B\nSubtract → Mix Material Amount",
+      "node_graph": [
+        {
+          "from": "Float Image Texture",
+          "out": "Value",
+          "to": "Subtract Texture",
+          "in": "Texture 1"
+        },
+        {
+          "from": "Float Image Texture",
+          "out": "Value",
+          "to": "Subtract Texture",
+          "in": "Texture 2"
+        },
+        {
+          "from": "Subtract Texture",
+          "out": "Value",
+          "to": "Mix Material",
+          "in": "Amount"
+        }
+      ]
+    },
+    {
+      "id": "oct_clamp",
+      "name": "Clamp Texture",
+      "description": "텍스처 값을 Min~Max 범위로 제한",
+      "category": "Blend & Math",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "NoiseTexture",
+        "Displacement",
+        "Universal Material"
+      ],
+      "use_case": "노이즈의 극단값 제거, Displacement 최대 높이 제한, Roughness 범위 조정",
+      "example": "NoiseTexture → Clamp (Min 0.2, Max 0.8)\nClamp → Roughness\n→ 러프니스가 0.2~0.8 사이로만 변화",
+      "node_graph": [
+        {
+          "from": "Noise Texture",
+          "out": "Value",
+          "to": "Clamp",
+          "in": "Texture"
+        },
+        {
+          "from": "Clamp",
+          "out": "Value",
+          "to": "Displacement",
+          "in": "Texture"
+        }
+      ]
+    },
+    {
+      "id": "oct_gradient",
+      "name": "Gradient Texture",
+      "description": "입력 흑백값을 색상 그라데이션으로 매핑하는 컬러 램프",
+      "category": "Blend & Math",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "NoiseTexture",
+        "TurbulenceTexture",
+        "FalloffTexture"
+      ],
+      "use_case": "프로시저럴 노이즈를 원하는 색상 팔레트로 변환, FalloffTexture와 결합해 엣지 컬러 처리",
+      "example": "TurbulenceTexture → Gradient (흑백→대리석 색상)\nGradient → Universal Material Albedo\n→ 원하는 색상의 프로시저럴 대리석",
+      "node_graph": [
+        {
+          "from": "Noise Texture",
+          "out": "Value",
+          "to": "Gradient Texture",
+          "in": "Texture"
+        },
+        {
+          "from": "Gradient Texture",
+          "out": "Color",
+          "to": "Universal Material",
+          "in": "Albedo"
+        }
+      ]
+    },
+    {
+      "id": "oct_invert",
+      "name": "Invert Texture",
+      "description": "텍스처 값을 반전 (1.0 - value). 흑↔백 전환",
+      "category": "Blend & Math",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "FloatImageTexture",
+        "AlphaImageTexture",
+        "NoiseTexture"
+      ],
+      "use_case": "마스크 반전, DirectX 노멀 맵 Y채널 반전, 밝기 기반 선택 영역 뒤집기",
+      "example": "FloatImageTexture (마스크) → Invert\nInvert → Mix Material Amount\n→ 원래 마스크의 반대 영역에 재질 적용",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Invert Texture",
+          "in": "Texture"
+        },
+        {
+          "from": "Invert Texture",
+          "out": "Color",
+          "to": "Universal Material",
+          "in": "Roughness"
+        }
+      ]
+    },
+    {
+      "id": "oct_color_correction",
+      "name": "Color Correction",
+      "description": "텍스처의 밝기·대비·감마·채도·색조를 노드에서 직접 조정",
+      "category": "Blend & Math",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "ImageTexture",
+        "NoiseTexture",
+        "Universal Material"
+      ],
+      "use_case": "텍스처 파일 수정 없이 색상/밝기 실시간 조정. 여러 소스 텍스처의 밝기 통일",
+      "example": "ImageTexture (원본) → ColorCorrection\nColorCorrection (Brightness +0.2, Contrast 1.3)\nColorCorrection → Universal Material Albedo",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Color Correction",
+          "in": "Texture"
+        },
+        {
+          "from": "Color Correction",
+          "out": "Color",
+          "to": "Universal Material",
+          "in": "Albedo"
+        }
+      ]
+    },
+    {
+      "id": "oct_cosine_mix",
+      "name": "Cosine Mix Texture",
+      "description": "코사인 커브로 두 텍스처를 부드럽게 블렌딩",
+      "category": "Blend & Math",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "ImageTexture",
+        "NoiseTexture",
+        "RGB Spectrum"
+      ],
+      "use_case": "급격한 경계 없이 두 텍스처를 매우 부드럽게 전환할 때",
+      "example": "RGB Spectrum (색상 A) → Texture 1\nRGB Spectrum (색상 B) → Texture 2\nFloatImageTexture → Amount\nCosineMix → Universal Material Albedo",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Cosine Mix Texture",
+          "in": "Texture 1"
+        },
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Cosine Mix Texture",
+          "in": "Texture 2"
+        },
+        {
+          "from": "Cosine Mix Texture",
+          "out": "Color",
+          "to": "Universal Material",
+          "in": "Albedo"
+        }
+      ]
+    },
+    {
+      "id": "oct_dirt_texture",
+      "name": "Dirt Texture",
+      "description": "메시 오목한 부분(홈·모서리)에 어두운 값 반환. 렌더타임 AO 노드",
+      "category": "Utility",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Mix Texture",
+        "Mix Material",
+        "Universal Material",
+        "Multiply"
+      ],
+      "use_case": "틈새·홈에 오염/녹 집중 표현, 자연스러운 웨더링 효과, 렌더 통합 AO",
+      "example": "DirtTexture (Radius 5cm) → Mix Material Amount\nMix: 깨끗한 금속 ↔ 녹슨 금속\n→ 홈·틈새에만 자동으로 녹 표현\n\nDirtTexture → Multiply → Albedo\n→ 오목한 부분 자동 어둡게",
+      "node_graph": [
+        {
+          "from": "Dirt Texture",
+          "out": "Value",
+          "to": "Mix Material",
+          "in": "Amount"
+        },
+        {
+          "from": "Dirt Texture",
+          "out": "Value",
+          "to": "Mix Texture",
+          "in": "Amount"
+        }
+      ]
+    },
+    {
+      "id": "oct_falloff_texture",
+      "name": "Falloff Texture",
+      "description": "카메라 기준 법선 방향에 따라 값 반환. 정면=0, 측면(그레이징)=1",
+      "category": "Utility",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Mix Texture",
+        "Mix Material",
+        "Universal Material",
+        "Gradient"
+      ],
+      "use_case": "Fresnel 효과 수동 구현, 엣지 발광(Rim Light), 투명 재질 엣지 처리",
+      "example": "FalloffTexture → Mix Material Amount\nMix: 투명(정면) ↔ 불투명(측면)\n→ 유리의 엣지가 더 반사되는 Fresnel 구현\n\nFalloffTexture → Gradient → Emission\n→ 측면에서만 발광하는 Rim Light 효과",
+      "node_graph": [
+        {
+          "from": "Falloff Texture",
+          "out": "Value",
+          "to": "Mix Material",
+          "in": "Amount"
+        },
+        {
+          "from": "Falloff Texture",
+          "out": "Value",
+          "to": "Universal Material",
+          "in": "Roughness"
+        }
+      ]
+    },
+    {
+      "id": "oct_round_edges",
+      "name": "Round Edges",
+      "description": "렌더타임에만 적용되는 가상 엣지 베벨. 메시 수정 없이 엣지 부드럽게",
+      "category": "Utility",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Universal Material",
+        "Glossy Material"
+      ],
+      "use_case": "플라스틱·금속 부품의 제조 공차 엣지. 모델링 없이 자연스러운 라운드 엣지 표현",
+      "example": "RoundEdges (Radius 0.5mm) → Universal Material의 Normal 채널\n→ 렌더에서만 엣지가 둥글게 보임\n※ 복잡한 교차 형태엔 부정확할 수 있음",
+      "node_graph": [
+        {
+          "from": "Round Edges",
+          "out": "Normal",
+          "to": "Universal Material",
+          "in": "Normal"
+        }
+      ]
+    },
+    {
+      "id": "oct_curvature",
+      "name": "Curvature Texture",
+      "description": "메시 곡률 측정. 볼록한 엣지=밝음, 오목한 부분=어두움",
+      "category": "Utility",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Mix Texture",
+        "Universal Material",
+        "Multiply"
+      ],
+      "use_case": "엣지 마모 효과(엣지에서 하부 금속 노출), 하이라이트 엣지 강조",
+      "example": "CurvatureTexture → Mix Material Amount\nMix: 페인트(오목) ↔ 긁힌 금속(볼록)\n→ 엣지에서 자동으로 페인트가 벗겨진 효과",
+      "node_graph": [
+        {
+          "from": "Curvature Texture",
+          "out": "Value",
+          "to": "Mix Material",
+          "in": "Amount"
+        },
+        {
+          "from": "Curvature Texture",
+          "out": "Value",
+          "to": "Universal Material",
+          "in": "Roughness"
+        }
+      ]
+    },
+    {
+      "id": "oct_triplanar",
+      "name": "TriPlanar",
+      "description": "X·Y·Z 3방향에서 동시에 텍스처를 투영하고 혼합. UV 없이 완전한 텍스처링",
+      "category": "Utility",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "ImageTexture",
+        "FloatImageTexture",
+        "Universal Material"
+      ],
+      "use_case": "UV가 없거나 비효율적인 지형·바위·유기체 메시. Seam 없이 어느 각도에서나 자연스러움",
+      "example": "ImageTexture (알베도) → TriPlanar Texture X/Y/Z\nTriPlanar (Scale 0.5, World Space) → Universal Material Albedo\n→ UV 없이 완전한 텍스처 적용\n※ World Space 시 오브젝트 이동하면 텍스처 슬라이딩",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "TriPlanar",
+          "in": "Texture X"
+        },
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "TriPlanar",
+          "in": "Texture Y"
+        },
+        {
+          "from": "TriPlanar",
+          "out": "Color",
+          "to": "Universal Material",
+          "in": "Albedo"
+        }
+      ]
+    },
+    {
+      "id": "oct_uwv_transform",
+      "name": "UVW Transform",
+      "description": "UV 이동(Offset)·회전·스케일 조절 노드",
+      "category": "Utility",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "ImageTexture",
+        "FloatImageTexture",
+        "Universal Material"
+      ],
+      "use_case": "타일링 수 조절, 텍스처 회전, 반복 패턴 단조로움 깨기",
+      "example": "ImageTexture → UVW Transform (Scale U 4, Scale V 4)\nUVW Transform → Universal Material Albedo\n→ 텍스처를 4×4 타일로 반복",
+      "node_graph": [
+        {
+          "from": "UVW Transform",
+          "out": "UV",
+          "to": "Image Texture",
+          "in": "UV Transform"
+        }
+      ]
+    },
+    {
+      "id": "oct_projection",
+      "name": "Projection",
+      "description": "텍스처 투영 방식 설정. UVW·Cubic·Spherical·TriPlanar·Camera 등",
+      "category": "Utility",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "ImageTexture",
+        "FloatImageTexture"
+      ],
+      "use_case": "UV 없이 박스/구/카메라 투영이 필요할 때. TriPlanar와 함께 씀",
+      "example": "Projection (Cubic) → ImageTexture\nImageTexture → Universal Material Albedo\n→ UV 작업 없이 박스 투영으로 빠른 텍스처 적용",
+      "node_graph": [
+        {
+          "from": "Projection",
+          "out": "UV",
+          "to": "Image Texture",
+          "in": "UV Transform"
+        }
+      ]
+    },
+    {
+      "id": "oct_blackbody_emission",
+      "name": "BlackBody Emission",
+      "description": "온도(켈빈)로 물리적 발광 색상 생성. 1800K=촛불, 5500K=일광",
+      "category": "Environment & Light",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Universal Material",
+        "Glossy Material"
+      ],
+      "use_case": "네온 튜브, 백열전구, 불꽃, 태양처럼 온도 기반 발광이 필요한 오브젝트",
+      "example": "BlackBodyEmission (Temperature 3200K, Power 100)\n→ Universal Material Emission\n→ 텅스텐 전구 색온도의 발광 면\n\nCast Illumination ON → 주변 오브젝트도 실제로 밝힘",
+      "node_graph": [
+        {
+          "from": "RGB Spectrum",
+          "out": "Color",
+          "to": "BlackBody Emission",
+          "in": "Texture"
+        },
+        {
+          "from": "BlackBody Emission",
+          "out": "Emission",
+          "to": "Universal Material",
+          "in": "Emission"
+        }
+      ]
+    },
+    {
+      "id": "oct_texture_emission",
+      "name": "Texture Emission",
+      "description": "이미지·프로시저럴 텍스처를 발광 소스로 사용",
+      "category": "Environment & Light",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "ImageTexture",
+        "RGB Spectrum",
+        "Universal Material"
+      ],
+      "use_case": "모니터 화면, 네온 사인 로고, 패턴 있는 LED 조명",
+      "example": "ImageTexture (화면 이미지) → TextureEmission Texture\nTextureEmission (Power 5) → Universal Material Emission\n→ 화면 이미지가 빛을 방출하는 디스플레이 재질",
+      "node_graph": [
+        {
+          "from": "RGB Spectrum",
+          "out": "Color",
+          "to": "Texture Emission",
+          "in": "Texture"
+        },
+        {
+          "from": "Texture Emission",
+          "out": "Emission",
+          "to": "Universal Material",
+          "in": "Emission"
+        }
+      ]
+    },
+    {
+      "id": "oct_hdri_environment",
+      "name": "Texture Environment (HDRI)",
+      "description": "HDR 이미지로 씬 환경 조명+배경 설정. 가장 기본적인 조명 방식",
+      "category": "Environment & Light",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "ImageTexture",
+        "PowerFloat",
+        "UVW Transform"
+      ],
+      "use_case": "실사 배경 조명, 스튜디오 반사, 야외 일조 시뮬레이션",
+      "example": "ImageTexture (studio.hdr, Gamma 1.0) → TextureEnvironment\nPower → 1.5 (조명 강도)\nRotation Y → 빛 방향 조정\n※ Live Viewer에서 Shift+드래그로 실시간 HDRI 회전",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "HDRI Environment",
+          "in": "Texture"
+        },
+        {
+          "from": "UVW Transform",
+          "out": "UV",
+          "to": "HDRI Environment",
+          "in": "Rotation Transform"
+        }
+      ]
+    },
+    {
+      "id": "oct_daylight",
+      "name": "Daylight Environment",
+      "description": "물리적으로 정확한 태양-하늘 조명 시스템. 시간/날씨 기반",
+      "category": "Environment & Light",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "C4D Sun Object"
+      ],
+      "use_case": "건축 시각화, 제품 야외씬, 날짜·시간 기반 정확한 일조 시뮬레이션",
+      "example": "DaylightEnvironment → C4D Sun 오브젝트 연결\nTurbidity 2.5 (맑은 날씨)\nSun Size 0.5 (선명한 그림자)\n→ 물리적으로 정확한 자연광",
+      "node_graph": [
+        {
+          "from": "Daylight Environment",
+          "out": "Environment",
+          "to": "World",
+          "in": "Environment"
+        }
+      ]
+    },
+    {
+      "id": "oct_portal",
+      "name": "Portal Material",
+      "description": "실내 창문에 배치해 HDRI 환경광 유입 경로를 알려주는 특수 재질",
+      "category": "Environment & Light",
+      "badge": "material",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "TextureEnvironment"
+      ],
+      "use_case": "실내 씬에서 창문을 통한 환경광 노이즈 감소. 샘플 수 줄이면서도 깨끗한 결과",
+      "example": "창문 폴리곤에 Portal Material 적용\nTextureEnvironment HDRI와 함께 사용\n→ Octane이 창문 방향으로 광선 샘플 집중\n→ 실내 씬 노이즈 50~70% 감소",
+      "node_graph": [
+        {
+          "from": "Portal Material",
+          "out": "Material",
+          "to": "Geometry (Window)",
+          "in": "Material"
+        }
+      ]
+    },
+    {
+      "id": "oct_volumetric_medium",
+      "name": "Scattering Medium (Volumetric)",
+      "description": "빛 산란을 시뮬레이션하는 볼륨 매질. 안개·연기·빛 줄기(God Ray)",
+      "category": "Volume",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Diffuse Material",
+        "Universal Material"
+      ],
+      "use_case": "실내 빛 줄기, 대기 안개, 수중 산란, 연기",
+      "example": "ScatteringMedium (Density 0.1, Scattering 흰색)\n→ Diffuse Material Medium 채널\n→ 닫힌 메시(큰 박스) 안에 적용\n→ 씬 전체 안개 효과\n\nPhase +0.5 → 광원 방향 빛 줄기 강조",
+      "node_graph": [
+        {
+          "from": "RGB Spectrum",
+          "out": "Color",
+          "to": "Scattering Medium",
+          "in": "Absorption"
+        },
+        {
+          "from": "Scattering Medium",
+          "out": "Medium",
+          "to": "Universal Material",
+          "in": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "oct_absorption_medium",
+      "name": "Absorption Medium",
+      "description": "빛을 흡수만 하는 매질. 산란 없이 색상 필터 역할",
+      "category": "Volume",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Specular Material"
+      ],
+      "use_case": "색이 있는 유리(스테인드글라스), 컬러 보틀, 짙은 투명 재질",
+      "example": "AbsorptionMedium (Absorption 파란색, Scale 0.5)\n→ Specular Material Medium 채널\n→ 파란색으로 빛을 흡수하는 색유리",
+      "node_graph": [
+        {
+          "from": "RGB Spectrum",
+          "out": "Color",
+          "to": "Absorption Medium",
+          "in": "Absorption"
+        },
+        {
+          "from": "Absorption Medium",
+          "out": "Medium",
+          "to": "Specular Material",
+          "in": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "oct_sss_medium",
+      "name": "Scattering Medium (SSS)",
+      "description": "빛이 표면 아래로 침투해 산란하는 SSS 전용 매질",
+      "category": "Volume",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Specular Material"
+      ],
+      "use_case": "인체 피부, 밀랍, 대리석, 우유처럼 빛이 내부에서 산란하는 재질",
+      "example": "ScatteringMedium\n  Scattering: 살구색 (R0.9 G0.7 B0.6)\n  Absorption: 어두운 적갈색\n  Scale: 0.3\n→ Specular Material Medium\n→ Phase 0.7 (피부 SSS)\n→ 자연스러운 피부 투과광 표현",
+      "node_graph": [
+        {
+          "from": "RGB Spectrum",
+          "out": "Color",
+          "to": "Scattering Medium",
+          "in": "Absorption"
+        },
+        {
+          "from": "Float Image Texture",
+          "out": "Value",
+          "to": "Scattering Medium",
+          "in": "Density"
+        },
+        {
+          "from": "Scattering Medium",
+          "out": "Medium",
+          "to": "Universal Material",
+          "in": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "oct_displacement",
+      "name": "Displacement",
+      "description": "텍스처 기반 실제 지오메트리 변위. 렌더 설정에서 Displacement 활성화 필요",
+      "category": "Deform & Normal",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "FloatImageTexture",
+        "NoiseTexture",
+        "Universal Material"
+      ],
+      "use_case": "지형, 거친 콘크리트, 직물 주름 등 실제로 메시를 변위해야 할 때. 범프보다 물리적으로 정확",
+      "example": "FloatImageTexture (height_map.exr, 16bit) → Displacement Texture\nDisplacement (Amount 5cm, Mid Level 0.5)\n→ Universal Material Displacement 채널\n\n※ Render Settings → Kernel → Displacement ON 필수\n※ 오브젝트에 Subdivision 모디파이어 추가 (레벨 4~6)",
+      "node_graph": [
+        {
+          "from": "Float Image Texture",
+          "out": "Value",
+          "to": "Displacement",
+          "in": "Texture"
+        },
+        {
+          "from": "Displacement",
+          "out": "Out",
+          "to": "Universal Material",
+          "in": "Displacement"
+        }
+      ]
+    },
+    {
+      "id": "oct_normal_map",
+      "name": "Normal Map (BumpMap Node)",
+      "description": "노멀 맵 텍스처를 올바르게 처리하는 노드",
+      "category": "Deform & Normal",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "ImageTexture",
+        "Universal Material"
+      ],
+      "use_case": "하이폴리 디테일을 로우폴리에 전달. 주름, 긁힘, 볼트 디테일",
+      "example": "ImageTexture (normal_map.png, Gamma 1.0) → BumpMap Node\nBumpMap (Map Type: Normal Map)\n→ Universal Material Normal 채널\n\n※ OpenGL 방식이 대부분 (초록=Y+)\n※ DirectX 방식이면 ColorCorrection으로 G채널 반전",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Normal Map",
+          "in": "Texture"
+        },
+        {
+          "from": "Normal Map",
+          "out": "Normal",
+          "to": "Universal Material",
+          "in": "Normal"
+        }
+      ]
+    },
+    {
+      "id": "oct_cryptomatte",
+      "name": "Cryptomatte",
+      "description": "오브젝트·머티리얼 기준 정확한 알파 마스크 자동 생성",
+      "category": "Advanced",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Render Settings",
+        "EXR Output"
+      ],
+      "use_case": "복잡한 오브젝트(헤어, 투명 유리)의 합성 마스크. 수동 로토 대체",
+      "example": "Render Settings → Render Passes → Cryptomatte ON\nEXR (멀티레이어) 저장\nAfter Effects (Cryptomatte 플러그인) → 오브젝트 클릭 → 마스크 자동 생성",
+      "node_graph": [
+        {
+          "from": "Render Output",
+          "out": "Beauty",
+          "to": "Cryptomatte",
+          "in": "Image"
+        },
+        {
+          "from": "Cryptomatte",
+          "out": "Matte",
+          "to": "Composite",
+          "in": "Mask"
+        }
+      ]
+    },
+    {
+      "id": "oct_aov_custom",
+      "name": "Custom AOV Output",
+      "description": "머티리얼 내 특정 값을 별도 렌더 채널로 출력",
+      "category": "Advanced",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Any Texture Node",
+        "Render Settings"
+      ],
+      "use_case": "특정 재질 마스크, 커스텀 셰이더 데이터를 합성용으로 추출",
+      "example": "FloatImageTexture (마스크) → AOV Output (ID: 1)\nRender Settings → Custom AOV 1 ON\n→ EXR에 해당 마스크 채널로 출력",
+      "node_graph": [
+        {
+          "from": "Image Texture",
+          "out": "Color",
+          "to": "Custom AOV Output",
+          "in": "Input"
+        },
+        {
+          "from": "Custom AOV Output",
+          "out": "AOV",
+          "to": "Render Output",
+          "in": "AOV Pass"
+        }
+      ]
+    },
+    {
+      "id": "oct_light_mixer",
+      "name": "Light Mixer (Light AOV)",
+      "description": "각 조명에 ID를 설정해 조명별 기여를 별도 채널로 렌더",
+      "category": "Advanced",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Octane Light",
+        "Render Settings"
+      ],
+      "use_case": "렌더 재실행 없이 후보정으로 조명 색상·강도 변경. 복잡한 라이팅 씬 최종 색 조정",
+      "example": "Octane Light → Light ID 1 설정\nRender Settings → Light AOV ON\nEXR 저장 → AE에서 Light 1 채널 별도 색 보정\n→ 렌더 없이 조명 방향/강도 변경 가능",
+      "node_graph": [
+        {
+          "from": "Light AOV",
+          "out": "Light",
+          "to": "Light Mixer",
+          "in": "Layer 1"
+        },
+        {
+          "from": "Light Mixer",
+          "out": "Color",
+          "to": "Composite",
+          "in": "Input"
+        }
+      ]
+    },
+    {
+      "id": "oct_osl_texture",
+      "name": "OSL Texture",
+      "description": "Open Shading Language 코드를 직접 작성해 커스텀 셰이더 구현",
+      "category": "Advanced",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Universal Material",
+        "Any Material Channel"
+      ],
+      "use_case": "노드로 구현 불가능한 복잡한 수학적 패턴, 외부 셰이더 코드 통합",
+      "example": "OSLTexture (code: 타일 패턴 코드)\n→ Universal Material Albedo\n※ CPU 실행이므로 GPU 렌더보다 느림\n※ 간단한 패턴은 기존 노드 조합이 더 효율적",
+      "node_graph": [
+        {
+          "from": "OSL Script",
+          "out": "Value",
+          "to": "OSL Texture",
+          "in": "OSL Input"
+        },
+        {
+          "from": "OSL Texture",
+          "out": "Color",
+          "to": "Universal Material",
+          "in": "Albedo"
+        }
+      ]
+    },
+    {
+      "id": "oct_kernel_path",
+      "name": "Path Tracing Kernel",
+      "description": "가장 정확한 렌더 커널. GI·코스틱 완전 지원. 최종 렌더 기본",
+      "category": "Advanced",
+      "badge": "utility",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Render Settings"
+      ],
+      "use_case": "최종 품질 렌더. 유리·보석·복잡한 간접광이 있는 씬",
+      "example": "Max Samples: 3000~10000 (씬 복잡도에 따라)\nGI Clamp: 10~50 (파이어플라이 제거)\nAI Denoising ON (빠른 수렴)\nDiffuse Depth 4, Specular Depth 8 (유리 씬)",
+      "node_graph": []
+    },
+    {
+      "id": "oct_random_color",
+      "name": "Random Color Texture",
+      "description": "인스턴스·클론마다 다른 랜덤 색상 반환",
+      "category": "Procedural",
+      "badge": "procedural",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Universal Material",
+        "Mix Texture"
+      ],
+      "use_case": "MoGraph Cloner로 복제된 오브젝트마다 서로 다른 색상 자동 적용",
+      "example": "RandomColorTexture → Universal Material Albedo\n→ Cloner의 각 클론이 자동으로 다른 색상\n※ C4D의 MoGraph Color Shader와 유사한 역할",
+      "node_graph": [
+        {
+          "from": "Random Color Texture",
+          "out": "Color",
+          "to": "Universal Material",
+          "in": "Albedo"
+        }
+      ]
+    },
+    {
+      "id": "oct_random_float",
+      "name": "Random Float Texture",
+      "description": "인스턴스마다 다른 랜덤 Float 값 반환",
+      "category": "Procedural",
+      "badge": "procedural",
+      "mac": "",
+      "win": "",
+      "connects_to": [
+        "Universal Material",
+        "Mix Material",
+        "TextureEmission"
+      ],
+      "use_case": "Cloner 아이템별로 미세하게 다른 Roughness·발광 강도 적용해 자연스러움 추가",
+      "example": "RandomFloatTexture (Min 0.1, Max 0.6) → Roughness\n→ 각 클론의 Roughness가 0.1~0.6 사이 랜덤\n→ 같은 오브젝트 복제인데 미묘하게 다른 질감",
+      "node_graph": [
+        {
+          "from": "Random Float Texture",
+          "out": "Value",
+          "to": "Universal Material",
+          "in": "Roughness"
+        }
+      ]
+    }
+  ]
+}

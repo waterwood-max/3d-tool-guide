@@ -1,0 +1,1077 @@
+{
+  "tool": "c4d",
+  "name": "Cinema 4D",
+  "items": [
+    {
+      "id": "make_editable",
+      "name": "Make Editable",
+      "description": "프리미티브/제너레이터를 편집 가능한 폴리곤 오브젝트로 변환. 되돌릴 수 없으므로 복사본 유지 권장",
+      "category": "Modeling",
+      "badge": "shortcut",
+      "mac": "C",
+      "win": "C"
+    },
+    {
+      "id": "extrude",
+      "name": "Extrude",
+      "description": "선택된 폴리곤/엣지/포인트를 노멀 방향으로 돌출",
+      "category": "Modeling",
+      "badge": "shortcut",
+      "mac": "D",
+      "win": "D"
+    },
+    {
+      "id": "inner_extrude",
+      "name": "Inner Extrude",
+      "description": "폴리곤 내부로 인셋(Inset) 생성. 창틀, 패널 디테일에 자주 사용",
+      "category": "Modeling",
+      "badge": "shortcut",
+      "mac": "I",
+      "win": "I"
+    },
+    {
+      "id": "knife_tool",
+      "name": "Knife Tool",
+      "description": "폴리곤 메시를 자유롭게 컷. Loop / Plane / Line 모드 지원",
+      "category": "Modeling",
+      "badge": "shortcut",
+      "mac": "K",
+      "win": "K"
+    },
+    {
+      "id": "loop_cut",
+      "name": "Loop Cut",
+      "description": "엣지 루프를 따라 균등하게 엣지 삽입. Slide 드래그로 위치 조정",
+      "category": "Modeling",
+      "badge": "shortcut",
+      "mac": "K + L",
+      "win": "K + L"
+    },
+    {
+      "id": "bevel",
+      "name": "Bevel",
+      "description": "엣지/버텍스에 베벨 적용. Subdivisions로 라운드 정도 조절",
+      "category": "Modeling",
+      "badge": "shortcut",
+      "mac": "M + S",
+      "win": "M + S"
+    },
+    {
+      "id": "bridge",
+      "name": "Bridge",
+      "description": "두 개의 열린 엣지/폴리곤 경계를 이어 메시 연결",
+      "category": "Modeling",
+      "badge": "shortcut",
+      "mac": "M + B",
+      "win": "M + B"
+    },
+    {
+      "id": "weld",
+      "name": "Weld",
+      "description": "포인트 두 개 이상을 하나로 병합. 인접 포인트 자동 스냅 지원",
+      "category": "Modeling",
+      "badge": "shortcut",
+      "mac": "M + Q",
+      "win": "M + Q"
+    },
+    {
+      "id": "dissolve",
+      "name": "Dissolve",
+      "description": "선택 엣지·포인트를 제거하고 인접 폴리곤을 자동으로 합쳐 메시 정리",
+      "category": "Modeling",
+      "badge": "shortcut",
+      "mac": "M + E",
+      "win": "M + E"
+    },
+    {
+      "id": "mirror",
+      "name": "Mirror",
+      "description": "오브젝트 또는 편집 모드 엘리먼트를 축 기준으로 미러링",
+      "category": "Modeling",
+      "badge": "shortcut",
+      "mac": "M + H",
+      "win": "M + H"
+    },
+    {
+      "id": "smooth_shift",
+      "name": "Smooth Shift",
+      "description": "폴리곤을 노멀 방향으로 스무스하게 돌출. 유기적 형태 수정에 유용",
+      "category": "Modeling",
+      "badge": "shortcut",
+      "mac": "M + W",
+      "win": "M + W"
+    },
+    {
+      "id": "spin_edge",
+      "name": "Spin Edge",
+      "description": "공유 엣지의 방향을 90도 회전. 삼각폴리 흐름 수정에 사용",
+      "category": "Modeling",
+      "badge": "shortcut",
+      "mac": "M + U",
+      "win": "M + U"
+    },
+    {
+      "id": "slide",
+      "name": "Slide",
+      "description": "엣지/포인트를 인접 폴리곤 면을 따라 슬라이드 이동",
+      "category": "Modeling",
+      "badge": "shortcut",
+      "mac": "M + T",
+      "win": "M + T"
+    },
+    {
+      "id": "close_polygon_hole",
+      "name": "Close Polygon Hole",
+      "description": "열린 폴리곤 경계(홀)를 클릭 하나로 메꿈",
+      "category": "Modeling",
+      "badge": "shortcut",
+      "mac": "M + D",
+      "win": "M + D"
+    },
+    {
+      "id": "connect_objects",
+      "name": "Connect Objects + Delete",
+      "description": "여러 오브젝트를 하나의 폴리곤 메시로 합치고 원본 삭제. 오브젝트 선택 후 메뉴에서 실행",
+      "category": "Modeling",
+      "badge": "shortcut",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "polygon_mode",
+      "name": "Polygon Mode",
+      "description": "폴리곤 편집 모드로 전환",
+      "category": "Edit Mode",
+      "badge": "Edit Mode",
+      "mac": "5",
+      "win": "5"
+    },
+    {
+      "id": "edge_mode",
+      "name": "Edge Mode",
+      "description": "엣지 편집 모드로 전환",
+      "category": "Edit Mode",
+      "badge": "Edit Mode",
+      "mac": "4",
+      "win": "4"
+    },
+    {
+      "id": "point_mode",
+      "name": "Point Mode",
+      "description": "포인트(버텍스) 편집 모드로 전환",
+      "category": "Edit Mode",
+      "badge": "Edit Mode",
+      "mac": "3",
+      "win": "3"
+    },
+    {
+      "id": "object_mode",
+      "name": "Object Mode",
+      "description": "오브젝트 모드로 전환",
+      "category": "Edit Mode",
+      "badge": "Edit Mode",
+      "mac": "2",
+      "win": "2"
+    },
+    {
+      "id": "loop_select",
+      "name": "Loop Selection",
+      "description": "엣지·폴리곤 루프를 한 번에 선택. 고리형 엣지 흐름 파악에 필수",
+      "category": "Selection",
+      "badge": "shortcut",
+      "mac": "U + L",
+      "win": "U + L"
+    },
+    {
+      "id": "fill_select",
+      "name": "Fill Selection",
+      "description": "경계 엣지로 막힌 인접 폴리곤 영역 전체를 채워서 선택",
+      "category": "Selection",
+      "badge": "shortcut",
+      "mac": "U + F",
+      "win": "U + F"
+    },
+    {
+      "id": "invert_select",
+      "name": "Invert Selection",
+      "description": "현재 선택을 반전",
+      "category": "Selection",
+      "badge": "shortcut",
+      "mac": "U + I",
+      "win": "U + I"
+    },
+    {
+      "id": "grow_select",
+      "name": "Grow Selection",
+      "description": "선택 영역을 인접 엘리먼트 방향으로 한 단계 확장",
+      "category": "Selection",
+      "badge": "shortcut",
+      "mac": "U + Y",
+      "win": "U + Y"
+    },
+    {
+      "id": "shrink_select",
+      "name": "Shrink Selection",
+      "description": "선택 영역 경계에서 한 단계 축소",
+      "category": "Selection",
+      "badge": "shortcut",
+      "mac": "U + S",
+      "win": "U + S"
+    },
+    {
+      "id": "ring_select",
+      "name": "Ring Selection",
+      "description": "루프와 수직 방향으로 엣지 링 선택",
+      "category": "Selection",
+      "badge": "shortcut",
+      "mac": "U + B",
+      "win": "U + B"
+    },
+    {
+      "id": "select_all",
+      "name": "Select All",
+      "description": "전체 선택 / 선택 해제 토글",
+      "category": "Selection",
+      "badge": "shortcut",
+      "mac": "Cmd + A",
+      "win": "Ctrl + A"
+    },
+    {
+      "id": "select_connected",
+      "name": "Select Connected",
+      "description": "연결된 모든 엘리먼트를 한 번에 선택 (아일랜드 선택)",
+      "category": "Selection",
+      "badge": "shortcut",
+      "mac": "U + W",
+      "win": "U + W"
+    },
+    {
+      "id": "gen_extrude_nurbs",
+      "name": "Extrude (Generator)",
+      "description": "스플라인을 Z축 방향으로 밀어 3D 면을 생성. 로고·텍스트·평면 단면 입체화에 핵심. 스플라인을 자식으로 놓고 Depth로 두께 조절",
+      "category": "Generators",
+      "badge": "Generator",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "gen_lathe",
+      "name": "Lathe",
+      "description": "스플라인을 축 주변으로 회전시켜 회전체 생성. 유리잔·컵·도자기·기둥·볼트 헤드 등 회전 대칭 형태에 최적",
+      "category": "Generators",
+      "badge": "Generator",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "gen_sweep",
+      "name": "Sweep",
+      "description": "프로파일 스플라인을 경로 스플라인을 따라 스윕하여 메시 생성. 파이프·호스·몰딩·전선·헤어밴드 등 경로를 따라가는 단면 형태에 사용",
+      "category": "Generators",
+      "badge": "Generator",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "gen_loft",
+      "name": "Loft",
+      "description": "두 개 이상의 스플라인 단면 사이를 채워 유기적 메시 생성. 비행기 동체·보트 선체·유기체 형태 제작에 활용. 스플라인 순서가 형태에 직접 영향",
+      "category": "Generators",
+      "badge": "Generator",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "gen_bezier",
+      "name": "Bezier NURBS",
+      "description": "베지어 패치 기반 NURBS 곡면 생성. 자동차 차체·공업 제품의 부드러운 곡면 모델링에 사용",
+      "category": "Generators",
+      "badge": "Generator",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "gen_subdivision",
+      "name": "Subdivision Surface",
+      "description": "메시를 서브디비전 알고리즘으로 부드럽게 스무싱. 캐릭터·유기물·제품 등 실무 필수. 자식 오브젝트를 비파괴적으로 스무싱. Subdivider Renderer로 렌더 전용 세분화 가능",
+      "category": "Generators",
+      "badge": "Generator",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "gen_symmetry",
+      "name": "Symmetry",
+      "description": "지정 축을 기준으로 자식 오브젝트를 실시간 대칭 미러링. 좌우 대칭 모델링 시간 절반 단축. 한쪽만 편집하면 반대쪽 자동 반영",
+      "category": "Generators",
+      "badge": "Generator",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "gen_boole",
+      "name": "Boole",
+      "description": "두 오브젝트 간 불리언 연산 (합집합 A+B / 차집합 A-B / 교집합 A∩B). 구멍 뚫기·복잡한 절단면에 사용. 폴리곤이 지저분해질 수 있어 최종 단계 또는 리메시와 병행 권장",
+      "category": "Generators",
+      "badge": "Generator",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "gen_atom_array",
+      "name": "Atom Array",
+      "description": "메시의 엣지·버텍스·폴리곤 위치에 구체와 실린더로 구성된 와이어프레임 구조를 생성. 스켈레톤·분자 구조·와이어아트 비주얼에 활용",
+      "category": "Generators",
+      "badge": "Generator",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "gen_instance",
+      "name": "Instance",
+      "description": "오브젝트의 렌더 전용 인스턴스 복제. 원본 수정 시 모든 인스턴스 자동 반영. 씬 최적화에 필수 — 수천 개 오브젝트도 메모리 부담 거의 없음",
+      "category": "Generators",
+      "badge": "Generator",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "gen_metaball",
+      "name": "Metaball",
+      "description": "구형 오브젝트들이 가까워지면 자동으로 유기적으로 합쳐지는 메타볼 생성. 물방울·점액·거품·blob형 캐릭터 표현에 사용. Hull Value로 합침 임계값 조절",
+      "category": "Generators",
+      "badge": "Generator",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "gen_volume_builder",
+      "name": "Volume Builder",
+      "description": "오브젝트들을 SDF(Signed Distance Field) 기반 볼륨으로 변환 후 불리언 합성. Smooth Union으로 자연스러운 합쳐짐 표현. Boole보다 훨씬 깔끔한 결과물",
+      "category": "Generators",
+      "badge": "Generator",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "gen_volume_mesher",
+      "name": "Volume Mesher",
+      "description": "Volume Builder가 생성한 볼륨 데이터를 폴리곤 메시로 변환. Volume Builder와 항상 세트로 사용. Voxel Size로 메시 해상도 조절",
+      "category": "Generators",
+      "badge": "Generator",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "gen_remesh",
+      "name": "Remesh",
+      "description": "복잡하거나 불규칙한 메시 토폴로지를 균일한 폴리곤으로 재구성. 스캔 데이터 정리, Boole 결과 후처리, 조각 모델 클린업에 활용",
+      "category": "Generators",
+      "badge": "Generator",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "gen_thicken",
+      "name": "Thicken",
+      "description": "평면 메시에 두께를 부여. 얇은 판재·카드·천·패브릭처럼 두께가 있는 오브젝트를 비파괴적으로 생성",
+      "category": "Generators",
+      "badge": "Generator",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "gen_lod",
+      "name": "LOD (Level of Detail)",
+      "description": "카메라 거리에 따라 오브젝트 디테일 자동 교체. 원거리에는 저폴리, 근거리에는 고폴리 표시로 씬 최적화",
+      "category": "Generators",
+      "badge": "Generator",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "def_bend",
+      "name": "Bend",
+      "description": "오브젝트를 원하는 축으로 구부림. 각도와 강도 조절. 빨대·파이프·팔다리 굽히기 등에 사용. 충분한 폴리곤 분할이 있어야 자연스러운 결과",
+      "category": "Deformers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "def_twist",
+      "name": "Twist",
+      "description": "오브젝트를 축을 중심으로 비틀기. 코르크스크류·나선형 구조물·꼬인 기둥 표현",
+      "category": "Deformers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "def_taper",
+      "name": "Taper",
+      "description": "한쪽 끝을 좁히거나 넓혀 뾰족하게 또는 사다리꼴 형태로 변형. 원뿔형·테이퍼 제품 디자인",
+      "category": "Deformers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "def_bulge",
+      "name": "Bulge",
+      "description": "중앙을 부풀리거나 오목하게 만드는 팽창·수축 디포머",
+      "category": "Deformers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "def_shear",
+      "name": "Shear",
+      "description": "오브젝트를 한쪽 방향으로 기울여 전단 변형. 이탤릭 텍스트처럼 기울어진 형태",
+      "category": "Deformers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "def_squash_stretch",
+      "name": "Squash & Stretch",
+      "description": "애니메이션 12원칙의 찌그러짐·늘어남 디포머. 통통 튀는 공, 캐릭터 과장 표현에 필수",
+      "category": "Deformers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "def_ffd",
+      "name": "FFD (Free Form Deformation)",
+      "description": "케이지(격자) 포인트를 움직여 내부 메시를 자유롭게 변형. 복잡한 형태를 전체적으로 조금씩 수정할 때 가장 직관적. 해상도(격자 수) 조절 가능",
+      "category": "Deformers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "def_displacer",
+      "name": "Displacer",
+      "description": "텍스처 맵 또는 노이즈를 기반으로 메시 버텍스를 실제로 이동시켜 변위. 실시간 지형·울퉁불퉁한 표면 제작. 충분한 세분화 필수",
+      "category": "Deformers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "def_spline_wrap",
+      "name": "Spline Wrap",
+      "description": "메시를 스플라인 경로를 따라 감아 배치. 리본·벨트·뱀·고무 호스처럼 경로를 따라 흐르는 오브젝트 제작",
+      "category": "Deformers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "def_wrap",
+      "name": "Wrap",
+      "description": "오브젝트를 구체·원통·임의 오브젝트 표면에 감싸 투영. 라벨·데칼·스티커를 3D 표면에 붙이는 효과",
+      "category": "Deformers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "def_wind",
+      "name": "Wind",
+      "description": "사인파 기반 물결 변형. 천·깃발·나뭇잎의 바람에 흔들리는 애니메이션에 활용",
+      "category": "Deformers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "def_jiggle",
+      "name": "Jiggle",
+      "description": "관성 기반 흔들림 시뮬레이션. 캐릭터 살, 안테나, 귀, 꼬리처럼 부모 움직임에 늦게 반응하는 2차 애니메이션",
+      "category": "Deformers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "def_collision",
+      "name": "Collision Deformer",
+      "description": "다른 오브젝트와 충돌 시 메시를 눌려 변형. 쿠션·고무·소프트 재질 오브젝트에 접촉 반응 구현",
+      "category": "Deformers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "def_shrinkwrap",
+      "name": "Shrinkwrap",
+      "description": "오브젝트 표면에 다른 메시를 래핑. 오브젝트 위에 두 번째 레이어를 밀착시킬 때 사용",
+      "category": "Deformers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "def_smooth",
+      "name": "Smooth",
+      "description": "메시를 부드럽게 스무싱. Subdivision Surface와 달리 폴리곤 수를 늘리지 않고 버텍스 위치만 조정",
+      "category": "Deformers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "def_morph",
+      "name": "Pose Morph",
+      "description": "여러 형태(Pose) 간 블렌딩 모핑 애니메이션. Strength 슬라이더로 Pose 간 전환. 캐릭터 표정, Shape Key 역할",
+      "category": "Deformers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "def_camera",
+      "name": "Camera Deformer",
+      "description": "카메라 시점에서만 보이는 렌즈 왜곡 효과를 메시에 적용. 광각 렌즈 배럴 왜곡 등 카메라 매칭용",
+      "category": "Deformers",
+      "badge": "modifier",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "mograph_cloner",
+      "name": "Cloner",
+      "description": "오브젝트를 Linear·Radial·Grid·Object 모드로 다중 복제. 이펙터와 필드로 각 클론을 개별 제어. MoGraph의 핵심 오브젝트",
+      "category": "MoGraph",
+      "badge": "MoGraph",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "mograph_effector_random",
+      "name": "Random Effector",
+      "description": "클론마다 랜덤 위치·회전·스케일 적용. Seed 값으로 재현 가능한 랜덤 생성. 텍스트 산란 애니메이션에 필수",
+      "category": "MoGraph",
+      "badge": "MoGraph",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "mograph_effector_plain",
+      "name": "Plain Effector",
+      "description": "필드로 범위를 지정해 클론에 균일한 변환 적용. 가장 기본적인 이펙터로 다른 이펙터와 조합 베이스로 사용",
+      "category": "MoGraph",
+      "badge": "MoGraph",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "mograph_effector_step",
+      "name": "Step Effector",
+      "description": "클론 인덱스 순서대로 단계적 효과 적용. 도미노·웨이브·순차 등장 애니메이션에 최적",
+      "category": "MoGraph",
+      "badge": "MoGraph",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "mograph_effector_shader",
+      "name": "Shader Effector",
+      "description": "텍스처/이미지의 밝기 값으로 클론을 제어. 이미지 픽셀에 따라 높낮이·색상 변화. 픽셀아트 3D 변환에 활용",
+      "category": "MoGraph",
+      "badge": "MoGraph",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "mograph_effector_sound",
+      "name": "Sound Effector",
+      "description": "오디오 주파수에 반응해 클론 변환. 음악 비주얼라이저 제작에 사용. FFT 스펙트럼 분석 기반",
+      "category": "MoGraph",
+      "badge": "MoGraph",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "mograph_effector_target",
+      "name": "Target Effector",
+      "description": "클론들이 지정한 오브젝트를 바라보도록 회전. 꽃잎·안테나·군중이 특정 지점을 향하게",
+      "category": "MoGraph",
+      "badge": "MoGraph",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "mograph_spline",
+      "name": "Spline Effector",
+      "description": "클론들을 스플라인 경로 위에 배치하고 스플라인 형태에 따라 변형",
+      "category": "MoGraph",
+      "badge": "MoGraph",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "mograph_tracer",
+      "name": "Tracer",
+      "description": "오브젝트의 이동 경로를 스플라인으로 실시간 추적. 입자·클론 궤적 시각화에 활용",
+      "category": "MoGraph",
+      "badge": "MoGraph",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "mograph_fracture",
+      "name": "Fracture",
+      "description": "자식 오브젝트들을 개별 클론으로 취급해 이펙터로 분산 제어. 폭발·파편화·분해 애니메이션의 핵심. Voronoi Fracture와 함께 사용",
+      "category": "MoGraph",
+      "badge": "MoGraph",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "mograph_voronoi",
+      "name": "Voronoi Fracture",
+      "description": "오브젝트를 보로노이 알고리즘으로 파편 조각으로 분리. 다이나믹과 결합해 현실적인 파괴·분쇄 시뮬레이션",
+      "category": "MoGraph",
+      "badge": "MoGraph",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "mograph_matrix",
+      "name": "Matrix",
+      "description": "Cloner보다 가볍고 빠른 행렬 기반 배치. 렌더 오브젝트 없이 위치 데이터만 생성. 다이나믹·파티클과 연동용",
+      "category": "MoGraph",
+      "badge": "MoGraph",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "mograph_text",
+      "name": "MoText",
+      "description": "텍스트를 글자·단어·줄 단위로 MoGraph 클론처럼 제어. 이펙터로 글자별 애니메이션 자동화",
+      "category": "MoGraph",
+      "badge": "MoGraph",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "mograph_field_linear",
+      "name": "Linear Field",
+      "description": "방향성 있는 선형 그라데이션으로 이펙터 영향 범위 지정. 한쪽에서 다른쪽으로 순차적 효과",
+      "category": "MoGraph",
+      "badge": "MoGraph",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "mograph_field_spherical",
+      "name": "Spherical Field",
+      "description": "구 형태 범위로 이펙터 영향 영역 지정. 중심에서 바깥으로 또는 반대 방향으로 효과 감쇠",
+      "category": "MoGraph",
+      "badge": "MoGraph",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "uv_project_cubic",
+      "name": "UV Projection — Cubic",
+      "description": "오브젝트에 6방향(박스) 투영 UV 적용. 직육면체형 오브젝트에 가장 왜곡 없는 UV. 건물 블록·박스형 가구의 빠른 UV 세팅",
+      "category": "UV & Mapping",
+      "badge": "Edit Mode",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "uv_project_cylindrical",
+      "name": "UV Projection — Cylindrical",
+      "description": "원통형 투영 UV. 캔·병·기둥 같은 원통형 오브젝트의 UV 매핑에 최적. 상하단 극점 왜곡 주의",
+      "category": "UV & Mapping",
+      "badge": "Edit Mode",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "uv_project_spherical",
+      "name": "UV Projection — Spherical",
+      "description": "구형 투영 UV. 공·지구본·눈알처럼 구형 오브젝트에 사용. 극점 왜곡 발생 — 심각하면 시임(Seam)으로 분리",
+      "category": "UV & Mapping",
+      "badge": "Edit Mode",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "uv_unwrap",
+      "name": "UV Unwrap",
+      "description": "시임(Seam) 엣지를 기준으로 메시를 펼쳐 UV 아일랜드 생성. Seam 설정이 결과의 핵심 — 눈에 안 보이는 부분이나 접힌 곳에 Seam 배치 권장. ABF 또는 LSCM 알고리즘 선택 가능",
+      "category": "UV & Mapping",
+      "badge": "Edit Mode",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "uv_optimal_mapping",
+      "name": "Optimal Mapping",
+      "description": "폴리곤 각도를 기준으로 UV 아일랜드를 자동 분리·배치. 시임 위치 신경 쓰지 않아도 빠르게 UV 생성. 정밀도보다 속도가 중요한 배경 오브젝트에 적합",
+      "category": "UV & Mapping",
+      "badge": "Edit Mode",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "uv_relax",
+      "name": "Relax UV",
+      "description": "UV 아일랜드 내부의 왜곡을 최소화하며 펼침. ABF(각도 기반)·LSCM(최소 왜곡) 알고리즘. Unwrap 후 반드시 Relax 적용해 텍스처 늘어남 최소화",
+      "category": "UV & Mapping",
+      "badge": "Edit Mode",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "uv_pack",
+      "name": "Pack UV Islands",
+      "description": "분리된 UV 아일랜드들을 0~1 UV 공간 안에 최대한 빽빽하게 자동 배치. 텍스처 텍셀 밀도 최적화에 필수. Margin(여백) 설정으로 베이킹 출혈 방지",
+      "category": "UV & Mapping",
+      "badge": "Edit Mode",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "uv_normalize",
+      "name": "Normalize UV Islands",
+      "description": "모든 UV 아일랜드를 동일한 텍셀 밀도(크기)로 정규화. 크기가 다른 아일랜드들의 텍스처 해상도를 균일하게 맞춤",
+      "category": "UV & Mapping",
+      "badge": "Edit Mode",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "uv_seam",
+      "name": "UV Seam",
+      "description": "엣지를 UV 펼침 경계(Seam)로 지정. Seam 위치가 UV 아일랜드 형태 결정. 눈에 보이지 않는 엣지(뒷면·안쪽·그림자 부위)에 배치 권장",
+      "category": "UV & Mapping",
+      "badge": "Edit Mode",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "texture_tag",
+      "name": "Texture Tag",
+      "description": "오브젝트에 UV 투영 방식 지정 태그. 투영 유형(UVW·Cubic·Cylindrical 등)과 타일링·오프셋 조절. 여러 머티리얼을 한 오브젝트에 지정할 때 각각의 태그로 관리",
+      "category": "UV & Mapping",
+      "badge": "Edit Mode",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "uv_camera_mapping",
+      "name": "Camera Mapping",
+      "description": "카메라 시점에서 이미지를 메시에 투영. 배경 사진을 3D 지오메트리에 입히는 매트페인팅·합성 작업에 사용",
+      "category": "UV & Mapping",
+      "badge": "Edit Mode",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "new_material",
+      "name": "New Material",
+      "description": "새 기본 머티리얼 생성",
+      "category": "Materials",
+      "badge": "shortcut",
+      "mac": "Cmd + N (Mat Mgr)",
+      "win": "Ctrl + N (Mat Mgr)"
+    },
+    {
+      "id": "material_reflectance",
+      "name": "Reflectance Channel",
+      "description": "C4D 기본 렌더러의 반사 채널. GGX·Phong·Beckmann 분포 모델 지원. Octane·Redshift 사용 시에는 해당 렌더러 전용 노드 사용 권장",
+      "category": "Materials",
+      "badge": "shortcut",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "render_settings",
+      "name": "Render Settings",
+      "description": "출력 해상도·프레임 레인지·샘플·포맷 등 렌더 파라미터 설정",
+      "category": "Rendering",
+      "badge": "shortcut",
+      "mac": "Cmd + B",
+      "win": "Ctrl + B"
+    },
+    {
+      "id": "render_active_view",
+      "name": "Render Active View",
+      "description": "현재 뷰포트를 픽처 뷰어로 렌더",
+      "category": "Rendering",
+      "badge": "shortcut",
+      "mac": "Cmd + R",
+      "win": "Ctrl + R"
+    },
+    {
+      "id": "render_to_po",
+      "name": "Render to Picture Viewer",
+      "description": "픽처 뷰어에 최종 렌더 출력",
+      "category": "Rendering",
+      "badge": "shortcut",
+      "mac": "Shift + R",
+      "win": "Shift + R"
+    },
+    {
+      "id": "take_system",
+      "name": "Take System",
+      "description": "여러 렌더 테이크(씬 상태·카메라·조명 조합)를 하나의 씬에서 관리. 다양한 버전을 전환하며 렌더 가능",
+      "category": "Rendering",
+      "badge": "shortcut",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "multi_pass",
+      "name": "Multi-Pass Rendering",
+      "description": "Diffuse·Specular·Shadow·AO·GI·Depth·Normal 등 패스별 분리 렌더. EXR로 출력 후 합성 소프트웨어에서 개별 제어",
+      "category": "Rendering",
+      "badge": "shortcut",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "play_animation",
+      "name": "Play / Pause Animation",
+      "description": "타임라인 애니메이션 재생/정지",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "F8",
+      "win": "F8"
+    },
+    {
+      "id": "record_keyframe",
+      "name": "Record Active Objects",
+      "description": "현재 상태를 키프레임으로 기록",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "F9",
+      "win": "F9"
+    },
+    {
+      "id": "go_to_start",
+      "name": "Go to Start",
+      "description": "타임라인 시작 프레임으로 이동",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "Shift + F",
+      "win": "Shift + F"
+    },
+    {
+      "id": "go_to_end",
+      "name": "Go to End",
+      "description": "타임라인 끝 프레임으로 이동",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "Shift + G",
+      "win": "Shift + G"
+    },
+    {
+      "id": "timeline",
+      "name": "Timeline Window",
+      "description": "타임라인 에디터 열기",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "Shift + F3",
+      "win": "Shift + F3"
+    },
+    {
+      "id": "f_curve",
+      "name": "F-Curve Manager",
+      "description": "키프레임 인터폴레이션 커브 에디터",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "Shift + F2",
+      "win": "Shift + F2"
+    },
+    {
+      "id": "prev_frame",
+      "name": "Previous Frame",
+      "description": "한 프레임 뒤로",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "F",
+      "win": "F"
+    },
+    {
+      "id": "next_frame",
+      "name": "Next Frame",
+      "description": "한 프레임 앞으로",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "G",
+      "win": "G"
+    },
+    {
+      "id": "add_keyframe",
+      "name": "Add Keyframe (all)",
+      "description": "모든 애니메이터블 파라미터에 키프레임 추가",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "Ctrl + F9",
+      "win": "Ctrl + F9"
+    },
+    {
+      "id": "frame_selected",
+      "name": "Frame Selected",
+      "description": "선택 오브젝트 뷰에 맞춤",
+      "category": "Viewport",
+      "badge": "shortcut",
+      "mac": "S",
+      "win": "S"
+    },
+    {
+      "id": "frame_all",
+      "name": "Frame All",
+      "description": "씬 전체 뷰에 맞춤",
+      "category": "Viewport",
+      "badge": "shortcut",
+      "mac": "H",
+      "win": "H"
+    },
+    {
+      "id": "viewport_solo",
+      "name": "Solo Mode",
+      "description": "선택 오브젝트만 뷰포트에 표시",
+      "category": "Viewport",
+      "badge": "shortcut",
+      "mac": "Q",
+      "win": "Q"
+    },
+    {
+      "id": "shading_gouraud",
+      "name": "Gouraud Shading",
+      "description": "뷰포트 고로 쉐이딩 모드",
+      "category": "Viewport",
+      "badge": "shortcut",
+      "mac": "N + A",
+      "win": "N + A"
+    },
+    {
+      "id": "shading_wireframe",
+      "name": "Wireframe Display",
+      "description": "뷰포트 와이어프레임 표시",
+      "category": "Viewport",
+      "badge": "shortcut",
+      "mac": "N + B",
+      "win": "N + B"
+    },
+    {
+      "id": "shading_lines",
+      "name": "Lines Only",
+      "description": "뷰포트 라인만 표시",
+      "category": "Viewport",
+      "badge": "shortcut",
+      "mac": "N + C",
+      "win": "N + C"
+    },
+    {
+      "id": "hide_selected",
+      "name": "Hide Selected",
+      "description": "선택된 오브젝트 뷰포트 숨김",
+      "category": "Viewport",
+      "badge": "shortcut",
+      "mac": "A",
+      "win": "A"
+    },
+    {
+      "id": "perspective_view",
+      "name": "Perspective View",
+      "description": "퍼스펙티브 뷰로 전환",
+      "category": "Navigation",
+      "badge": "shortcut",
+      "mac": "F5",
+      "win": "F5"
+    },
+    {
+      "id": "top_view",
+      "name": "Top View",
+      "description": "탑 뷰로 전환",
+      "category": "Navigation",
+      "badge": "shortcut",
+      "mac": "F2",
+      "win": "F2"
+    },
+    {
+      "id": "right_view",
+      "name": "Right View",
+      "description": "우측 뷰로 전환",
+      "category": "Navigation",
+      "badge": "shortcut",
+      "mac": "F3",
+      "win": "F3"
+    },
+    {
+      "id": "front_view",
+      "name": "Front View",
+      "description": "앞면 뷰로 전환",
+      "category": "Navigation",
+      "badge": "shortcut",
+      "mac": "F4",
+      "win": "F4"
+    },
+    {
+      "id": "four_views",
+      "name": "Four Views",
+      "description": "4분할 뷰 레이아웃",
+      "category": "Navigation",
+      "badge": "shortcut",
+      "mac": "F1",
+      "win": "F1"
+    },
+    {
+      "id": "orbit",
+      "name": "Orbit / Rotate View",
+      "description": "뷰포트 회전",
+      "category": "Navigation",
+      "badge": "shortcut",
+      "mac": "Alt + LMB",
+      "win": "Alt + LMB"
+    },
+    {
+      "id": "pan",
+      "name": "Pan View",
+      "description": "뷰포트 이동",
+      "category": "Navigation",
+      "badge": "shortcut",
+      "mac": "Alt + MMB",
+      "win": "Alt + MMB"
+    },
+    {
+      "id": "zoom_view",
+      "name": "Zoom View",
+      "description": "뷰포트 줌 인/아웃",
+      "category": "Navigation",
+      "badge": "shortcut",
+      "mac": "Alt + RMB",
+      "win": "Alt + RMB"
+    },
+    {
+      "id": "undo",
+      "name": "Undo",
+      "description": "작업 취소",
+      "category": "Navigation",
+      "badge": "shortcut",
+      "mac": "Cmd + Z",
+      "win": "Ctrl + Z"
+    },
+    {
+      "id": "redo",
+      "name": "Redo",
+      "description": "작업 재실행",
+      "category": "Navigation",
+      "badge": "shortcut",
+      "mac": "Cmd + Shift + Z",
+      "win": "Ctrl + Shift + Z"
+    }
+  ]
+}

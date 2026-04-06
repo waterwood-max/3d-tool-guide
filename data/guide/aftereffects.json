@@ -1,0 +1,510 @@
+{
+  "tool": "aftereffects",
+  "name": "After Effects",
+  "items": [
+    {
+      "id": "ae_new_comp",
+      "name": "New Composition",
+      "description": "새 컴포지션 생성",
+      "category": "Composition",
+      "badge": "shortcut",
+      "mac": "Cmd + N",
+      "win": "Ctrl + N"
+    },
+    {
+      "id": "ae_comp_settings",
+      "name": "Composition Settings",
+      "description": "컴포지션 해상도·프레임레이트·지속 시간 설정",
+      "category": "Composition",
+      "badge": "shortcut",
+      "mac": "Cmd + K",
+      "win": "Ctrl + K"
+    },
+    {
+      "id": "ae_precompose",
+      "name": "Pre-compose",
+      "description": "레이어를 새 컴포지션으로 묶기",
+      "category": "Composition",
+      "badge": "shortcut",
+      "mac": "Cmd + Shift + C",
+      "win": "Ctrl + Shift + C"
+    },
+    {
+      "id": "ae_render_queue",
+      "name": "Add to Render Queue",
+      "description": "현재 컴포지션을 렌더 큐에 추가",
+      "category": "Composition",
+      "badge": "shortcut",
+      "mac": "Cmd + Shift + /",
+      "win": "Ctrl + Shift + /"
+    },
+    {
+      "id": "ae_add_to_media_encoder",
+      "name": "Add to Media Encoder Queue",
+      "description": "Adobe Media Encoder로 내보내기",
+      "category": "Composition",
+      "badge": "shortcut",
+      "mac": "Cmd + Alt + M",
+      "win": "Ctrl + Alt + M"
+    },
+    {
+      "id": "ae_new_solid",
+      "name": "New Solid Layer",
+      "description": "단색 솔리드 레이어 생성",
+      "category": "Layers",
+      "badge": "shortcut",
+      "mac": "Cmd + Y",
+      "win": "Ctrl + Y"
+    },
+    {
+      "id": "ae_new_null",
+      "name": "New Null Object",
+      "description": "부모 링크용 Null 오브젝트 레이어 생성",
+      "category": "Layers",
+      "badge": "shortcut",
+      "mac": "Cmd + Alt + Shift + Y",
+      "win": "Ctrl + Alt + Shift + Y"
+    },
+    {
+      "id": "ae_new_shape",
+      "name": "New Shape Layer",
+      "description": "셰이프 레이어 생성 (벡터 도형)",
+      "category": "Layers",
+      "badge": "shortcut",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "ae_new_text",
+      "name": "New Text Layer",
+      "description": "텍스트 레이어 생성",
+      "category": "Layers",
+      "badge": "shortcut",
+      "mac": "Cmd + Alt + Shift + T",
+      "win": "Ctrl + Alt + Shift + T"
+    },
+    {
+      "id": "ae_duplicate",
+      "name": "Duplicate Layer",
+      "description": "레이어 복제",
+      "category": "Layers",
+      "badge": "shortcut",
+      "mac": "Cmd + D",
+      "win": "Ctrl + D"
+    },
+    {
+      "id": "ae_split_layer",
+      "name": "Split Layer",
+      "description": "현재 타임코드에서 레이어 분리",
+      "category": "Layers",
+      "badge": "shortcut",
+      "mac": "Cmd + Shift + D",
+      "win": "Ctrl + Shift + D"
+    },
+    {
+      "id": "ae_solo",
+      "name": "Toggle Solo",
+      "description": "레이어 솔로 모드 토글",
+      "category": "Layers",
+      "badge": "shortcut",
+      "mac": "S (Solo switch)",
+      "win": "S (Solo switch)"
+    },
+    {
+      "id": "ae_hide_layer",
+      "name": "Hide Layer",
+      "description": "레이어 가시성 토글",
+      "category": "Layers",
+      "badge": "shortcut",
+      "mac": "Shy switch",
+      "win": "Shy switch"
+    },
+    {
+      "id": "ae_lock_layer",
+      "name": "Lock Layer",
+      "description": "레이어 잠금 (편집 방지)",
+      "category": "Layers",
+      "badge": "shortcut",
+      "mac": "Cmd + L",
+      "win": "Ctrl + L"
+    },
+    {
+      "id": "ae_parent_pick",
+      "name": "Parent Pickwhip",
+      "description": "레이어 간 부모 관계 설정",
+      "category": "Layers",
+      "badge": "shortcut",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "ae_track_matte",
+      "name": "Track Matte",
+      "description": "상위 레이어를 마스크로 사용 (Alpha/Luma)",
+      "category": "Layers",
+      "badge": "shortcut",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "ae_set_keyframe",
+      "name": "Set Keyframe",
+      "description": "선택된 프로퍼티에 키프레임 추가",
+      "category": "Keyframe",
+      "badge": "shortcut",
+      "mac": "Alt + Shift + 속성단축키",
+      "win": "Alt + Shift + 속성단축키"
+    },
+    {
+      "id": "ae_select_all_kf",
+      "name": "Select All Keyframes",
+      "description": "해당 레이어의 키프레임 모두 선택",
+      "category": "Keyframe",
+      "badge": "shortcut",
+      "mac": "Cmd + A",
+      "win": "Ctrl + A"
+    },
+    {
+      "id": "ae_easy_ease",
+      "name": "Easy Ease",
+      "description": "키프레임 In/Out을 Easy Ease로 변환",
+      "category": "Keyframe",
+      "badge": "shortcut",
+      "mac": "F9",
+      "win": "F9"
+    },
+    {
+      "id": "ae_easy_ease_in",
+      "name": "Easy Ease In",
+      "description": "키프레임 In만 Easy Ease 적용",
+      "category": "Keyframe",
+      "badge": "shortcut",
+      "mac": "Shift + F9",
+      "win": "Shift + F9"
+    },
+    {
+      "id": "ae_easy_ease_out",
+      "name": "Easy Ease Out",
+      "description": "키프레임 Out만 Easy Ease 적용",
+      "category": "Keyframe",
+      "badge": "shortcut",
+      "mac": "Ctrl + Shift + F9",
+      "win": "Ctrl + Shift + F9"
+    },
+    {
+      "id": "ae_graph_editor",
+      "name": "Graph Editor",
+      "description": "키프레임 속도 커브 편집",
+      "category": "Keyframe",
+      "badge": "shortcut",
+      "mac": "Shift + F3",
+      "win": "Shift + F3"
+    },
+    {
+      "id": "ae_hold_keyframe",
+      "name": "Hold Keyframe",
+      "description": "다음 키프레임까지 값을 유지 (보간 없음)",
+      "category": "Keyframe",
+      "badge": "shortcut",
+      "mac": "Cmd + Alt + H",
+      "win": "Ctrl + Alt + H"
+    },
+    {
+      "id": "ae_jump_prev_kf",
+      "name": "Jump to Previous Keyframe",
+      "description": "이전 키프레임으로 이동",
+      "category": "Keyframe",
+      "badge": "shortcut",
+      "mac": "J",
+      "win": "J"
+    },
+    {
+      "id": "ae_jump_next_kf",
+      "name": "Jump to Next Keyframe",
+      "description": "다음 키프레임으로 이동",
+      "category": "Keyframe",
+      "badge": "shortcut",
+      "mac": "K",
+      "win": "K"
+    },
+    {
+      "id": "ae_effects_panel",
+      "name": "Open Effects Panel",
+      "description": "이펙트 & 프리셋 패널 열기",
+      "category": "Effects",
+      "badge": "shortcut",
+      "mac": "Cmd + 5",
+      "win": "Ctrl + 5"
+    },
+    {
+      "id": "ae_apply_effect",
+      "name": "Apply / Search Effect",
+      "description": "이펙트 검색 후 적용",
+      "category": "Effects",
+      "badge": "shortcut",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "ae_remove_effects",
+      "name": "Remove All Effects",
+      "description": "레이어의 모든 이펙트 제거",
+      "category": "Effects",
+      "badge": "shortcut",
+      "mac": "Cmd + Shift + E",
+      "win": "Ctrl + Shift + E"
+    },
+    {
+      "id": "ae_motion_blur",
+      "name": "Enable Motion Blur",
+      "description": "레이어 모션 블러 활성화",
+      "category": "Effects",
+      "badge": "shortcut",
+      "mac": "Layer switch",
+      "win": "Layer switch"
+    },
+    {
+      "id": "ae_3d_layer",
+      "name": "Toggle 3D Layer",
+      "description": "레이어를 3D 레이어로 전환",
+      "category": "Effects",
+      "badge": "shortcut",
+      "mac": "Layer switch",
+      "win": "Layer switch"
+    },
+    {
+      "id": "ae_blending_mode",
+      "name": "Blending Modes",
+      "description": "레이어 블렌딩 모드 변경 (Normal, Add, Screen 등)",
+      "category": "Color",
+      "badge": "shortcut",
+      "mac": "Shift + - / Shift + =",
+      "win": "Shift + - / Shift + ="
+    },
+    {
+      "id": "ae_auto_color",
+      "name": "Auto Color",
+      "description": "Lumetri 색상 자동 조정 이펙트",
+      "category": "Color",
+      "badge": "shortcut",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "ae_curves",
+      "name": "Curves Effect",
+      "description": "Curves 이펙트로 RGB 채널 조정",
+      "category": "Color",
+      "badge": "shortcut",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "ae_hue_sat",
+      "name": "Hue / Saturation Effect",
+      "description": "색조·채도·명도 조정 이펙트",
+      "category": "Color",
+      "badge": "shortcut",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "ae_levels",
+      "name": "Levels Effect",
+      "description": "레벨로 어두운/밝은 영역 조정",
+      "category": "Color",
+      "badge": "shortcut",
+      "mac": "",
+      "win": ""
+    },
+    {
+      "id": "ae_new_mask",
+      "name": "New Mask",
+      "description": "레이어에 새 마스크 추가",
+      "category": "Masks",
+      "badge": "shortcut",
+      "mac": "Cmd + Shift + N",
+      "win": "Ctrl + Shift + N"
+    },
+    {
+      "id": "ae_feather_mask",
+      "name": "Mask Feather",
+      "description": "마스크 가장자리 페더링",
+      "category": "Masks",
+      "badge": "shortcut",
+      "mac": "F (Mask 선택시)",
+      "win": "F (Mask 선택시)"
+    },
+    {
+      "id": "ae_expand_mask",
+      "name": "Mask Expansion",
+      "description": "마스크 경계를 안/바깥으로 확장",
+      "category": "Masks",
+      "badge": "shortcut",
+      "mac": "MM (Mask 선택시)",
+      "win": "MM (Mask 선택시)"
+    },
+    {
+      "id": "ae_toggle_mask_vis",
+      "name": "Toggle Mask Visibility",
+      "description": "마스크 표시/숨김 토글",
+      "category": "Masks",
+      "badge": "shortcut",
+      "mac": "Cmd + Shift + H",
+      "win": "Ctrl + Shift + H"
+    },
+    {
+      "id": "ae_freeform_mask",
+      "name": "RotoBezier Mask",
+      "description": "Roto Bezier 자유형 마스크 그리기",
+      "category": "Masks",
+      "badge": "shortcut",
+      "mac": "Q (펜 도구 선택 후)",
+      "win": "Q (펜 도구 선택 후)"
+    },
+    {
+      "id": "ae_position",
+      "name": "Position",
+      "description": "레이어 위치 프로퍼티 표시 / 키프레임",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "P",
+      "win": "P"
+    },
+    {
+      "id": "ae_scale_prop",
+      "name": "Scale",
+      "description": "레이어 스케일 프로퍼티 표시 / 키프레임",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "S",
+      "win": "S"
+    },
+    {
+      "id": "ae_rotation",
+      "name": "Rotation",
+      "description": "레이어 회전 프로퍼티 표시 / 키프레임",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "R",
+      "win": "R"
+    },
+    {
+      "id": "ae_opacity",
+      "name": "Opacity",
+      "description": "레이어 불투명도 프로퍼티 표시 / 키프레임",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "T",
+      "win": "T"
+    },
+    {
+      "id": "ae_anchor_point",
+      "name": "Anchor Point",
+      "description": "앵커 포인트 프로퍼티 표시",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "A",
+      "win": "A"
+    },
+    {
+      "id": "ae_all_props",
+      "name": "Show All Modified Properties",
+      "description": "키프레임이 있는 모든 프로퍼티 표시",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "U",
+      "win": "U"
+    },
+    {
+      "id": "ae_all_kf_props",
+      "name": "Show All Keyframed Props",
+      "description": "모든 수정된 프로퍼티 표시",
+      "category": "Animation",
+      "badge": "shortcut",
+      "mac": "UU",
+      "win": "UU"
+    },
+    {
+      "id": "ae_play_preview",
+      "name": "Play RAM Preview",
+      "description": "RAM 프리뷰 재생",
+      "category": "Shortcuts",
+      "badge": "shortcut",
+      "mac": "Space",
+      "win": "Space"
+    },
+    {
+      "id": "ae_goto_start",
+      "name": "Go to Composition Start",
+      "description": "타임라인 시작점으로 이동",
+      "category": "Shortcuts",
+      "badge": "shortcut",
+      "mac": "Home",
+      "win": "Home"
+    },
+    {
+      "id": "ae_goto_end",
+      "name": "Go to Composition End",
+      "description": "타임라인 끝점으로 이동",
+      "category": "Shortcuts",
+      "badge": "shortcut",
+      "mac": "End",
+      "win": "End"
+    },
+    {
+      "id": "ae_trim_in",
+      "name": "Trim Layer In Point",
+      "description": "레이어 인포인트를 현재 타임으로 설정",
+      "category": "Shortcuts",
+      "badge": "shortcut",
+      "mac": "Alt + [",
+      "win": "Alt + ["
+    },
+    {
+      "id": "ae_trim_out",
+      "name": "Trim Layer Out Point",
+      "description": "레이어 아웃포인트를 현재 타임으로 설정",
+      "category": "Shortcuts",
+      "badge": "shortcut",
+      "mac": "Alt + ]",
+      "win": "Alt + ]"
+    },
+    {
+      "id": "ae_fit_to_comp",
+      "name": "Fit to Comp",
+      "description": "레이어를 컴포지션 크기에 맞게 스케일",
+      "category": "Shortcuts",
+      "badge": "shortcut",
+      "mac": "Cmd + Alt + F",
+      "win": "Ctrl + Alt + F"
+    },
+    {
+      "id": "ae_zoom_in",
+      "name": "Zoom In Timeline",
+      "description": "타임라인 줌 인",
+      "category": "Shortcuts",
+      "badge": "shortcut",
+      "mac": "= (Equal)",
+      "win": "= (Equal)"
+    },
+    {
+      "id": "ae_zoom_out",
+      "name": "Zoom Out Timeline",
+      "description": "타임라인 줌 아웃",
+      "category": "Shortcuts",
+      "badge": "shortcut",
+      "mac": "- (Minus)",
+      "win": "- (Minus)"
+    },
+    {
+      "id": "ae_undo",
+      "name": "Undo",
+      "description": "작업 취소",
+      "category": "Shortcuts",
+      "badge": "shortcut",
+      "mac": "Cmd + Z",
+      "win": "Ctrl + Z"
+    }
+  ]
+}

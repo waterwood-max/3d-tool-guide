@@ -41,6 +41,10 @@ def get_categories(items):
 
 # ---------- Routes ----------
 
+@app.route('/')
+def index():
+    return redirect(url_for('guide_index'))
+
 @app.route('/guide')
 def guide_index():
     tools_data = {}
